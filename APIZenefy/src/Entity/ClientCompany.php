@@ -12,41 +12,54 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ClientCompanyRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:ClientCompany']],
+)]
 class ClientCompany {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read:ClientCompany', 'read:ForUser'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['read:ClientCompany', 'read:ForUser'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('read:ClientCompany')]
     private ?string $siret = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups('read:ClientCompany', 'test')]
     private ?string $address = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('read:ClientCompany', 'test')]
     private ?string $email = null;
 
     #[ORM\Column(length: 35)]
+    #[Groups('read:ClientCompany', 'test')]
     private ?string $num_phone = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('read:ClientCompany')]
     private ?int $nb_employe = null;
 
     #[ORM\Column]
+    #[Groups('read:ClientCompany')]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column]
+    #[Groups('read:ClientCompany')]
     private ?\DateTimeImmutable $updated_at = null;
 
     #[ORM\Column]
+    #[Groups('read:ClientCompany')]
     private ?\DateTimeImmutable $ended_at = null;
 
     #[ORM\OneToMany(mappedBy: 'client_company_id', targetEntity: User::class)]
+    #[Groups('read:ClientCompany')]
     private Collection $users;
 
     public function __construct(string $name) {
