@@ -5,7 +5,7 @@ import '../../public/scss/components/buttons/button.scss';
 
 export default function ButtonConnexion(
     props: {
-        onClick: any,
+        onClick?: any,
         text: string,
         type: any,
         className: string,

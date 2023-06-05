@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import '../../public/scss/components/header/header.scss';
 
+import LinkAccueil from './../../components/links/link';
+
 
 export default function Header() {
 
@@ -12,28 +14,44 @@ export default function Header() {
 
     const handleMenuButtonClick = () => {
         const menuButton = document.getElementById("menuButton");
-        if (menuButton !== null) {
+        if (menuButton) {
             menuButton.classList.toggle('is-active');
         }
     }
+
     return (
         <div className="header">
-            <div className="top_side">
+            <div className="menu">
                 <h1>ZENEFY</h1>
-                <div className="menu">
-                    <a
-                        href="#"
-                        className="menu-button"
-                        id="menuButton"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleMenuButtonClick();
-                        }}>
+                <div className="mid_side">
+                <LinkAccueil 
+                        href='#'
+                        className='activite color_primary'
+                        text='Types d&apos;activités'
+                        /> 
+                <LinkAccueil 
+                        href='#'
+                        className='lieu color_primary'
+                        text='Renseignez un lieu'
+                        /> 
+                <div className="search">
+                    <i className="fa-solid fa-magnifying-glass fa-lg"></i>
+                </div>
+                </div>
+                <div className="right_side">
+                <LinkAccueil 
+                    href='#'
+                    className='menu-button' 
+                    id='menuButton'
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                        e.preventDefault();
+                        handleMenuButtonClick();
+                    }}
+                >
                         <span className="burger-icon"></span>
-                    </a>
+                    </LinkAccueil> 
                 </div>
             </div>
-        </div >
-
+        </div>
     )
 }

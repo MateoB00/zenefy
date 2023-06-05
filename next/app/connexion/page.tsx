@@ -46,6 +46,7 @@ export default function Page() {
                             className="test"
                             type='submit'
                             text="Connexion"
+                            onClick=""
                         />
                     </form>
                     <div className="footer">
@@ -91,6 +92,7 @@ export default function Page() {
                             className="test"
                             type='submit'
                             text="Connexion"
+                            onClick=""
                         />
                     </form>
                     <div className="footer">
@@ -145,6 +147,7 @@ export default function Page() {
                         className="test"
                         type='submit'
                         text="Connexion"
+                        onClick=""
                     />
                 </form>
                 <div className="footer">

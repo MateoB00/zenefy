@@ -5,7 +5,7 @@
     width: 100%;
     background-color: white;
 
-    .top_side {
+    .menu {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -16,7 +16,41 @@
             font-size: 1.5em;
         }
 
-        .menu {
+        .mid_side {
+            display: flex;
+            align-items: center;
+            // width: fit-content;
+            border: 2px solid $primary_color;
+            border-radius: 50px;
+            padding: 10px 10px 10px 40px;
+
+            .activite {
+                border-right: 2px solid $primary_color;
+                padding: 0px 20px 0px 0px;
+                
+                font-weight: bold;
+            }
+
+            .lieu {
+                padding: 0px 65px 0px 20px;
+            }
+            .search {
+                background-color: $primary_color;
+                // padding: 10px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // margin-left: 30px;
+                i {
+                    color: white;
+                }
+            }
+        }
+
+        .right_side {
             width: fit-content;
             background-color: $primary_color;
             padding: 10px 10px 10px 10px;
