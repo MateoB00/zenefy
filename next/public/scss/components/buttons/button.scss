@@ -1,0 +1,9 @@
+@import '../../root';
+
+.buttonComponent {
+    border: 2px solid;
+    width: 80%;
+    background-color: white;
+    color: $primary_color;
+    height: 4.5vh;
+}

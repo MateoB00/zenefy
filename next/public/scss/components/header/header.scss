@@ -1,0 +1,36 @@
+@import '../../root';
+@import "./burger";
+
+.header {
+    width: 100%;
+    background-color: white;
+
+    .top_side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 40px 10px 40px;
+
+        h1 {
+            color: $primary_color;
+            font-size: 1.5em;
+        }
+
+        .menu {
+            width: fit-content;
+            background-color: $primary_color;
+            padding: 10px 10px 10px 10px;
+            border-radius: 10px;
+
+            .burger-icon {
+                @include burger(25px, 3px, 5px, #ffffff);
+            }
+
+            .menu-button.is-active .burger-icon {
+                @include burger-to-cross;
+            }
+
+
+        }
+    }
+}
