@@ -1,0 +1,17 @@
+@import '../../root';
+
+.third_bloc {
+    background-color: $primary_color;
+    text-align: center;
+
+    .title {
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+
+    .you {
+        margin-top: 30px;
+        padding-bottom: 30px;
+        font-size: 1.7em;
+    }
+}

@@ -27,13 +27,14 @@
             .activite {
                 border-right: 2px solid $primary_color;
                 padding: 0px 20px 0px 0px;
-                
+
                 font-weight: bold;
             }
 
             .lieu {
                 padding: 0px 65px 0px 20px;
             }
+
             .search {
                 background-color: $primary_color;
                 // padding: 10px;
@@ -43,6 +44,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
                 // margin-left: 30px;
                 i {
                     color: white;
@@ -65,6 +67,79 @@
             }
 
 
+        }
+    }
+
+    .popUpMenu {
+        display: none;
+    }
+
+    .popUpMenuBlock {
+        display: block;
+        background-color: #fff;
+        color: $primary_color;
+        position: absolute;
+        border-radius: 20px;
+        top: 7%;
+        right: 2%;
+        height: fit-content;
+        width: 15%;
+        border: 1px solid grey;
+
+        .item_1 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_2 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_3 {
+            padding: 10px 0px 10px 20px;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+            background-image: $background_gold_gradient;
+        }
+
+        .item_4 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_5 {
+            padding: 10px 0px 10px 20px;
+        }
+    }
+
+    .popUpZenefy {
+        display: none;
+    }
+
+    .popUpZenefyBlock {
+        display: block;
+        background-color: #fff;
+        color: $primary_color;
+        position: absolute;
+        border-radius: 20px;
+        top: 17%;
+        right: 17.3%;
+        height: fit-content;
+        width: 15%;
+        border: 1px solid grey;
+
+        .item_1 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_2 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_3 {
+            padding: 10px 0px 10px 20px;
+        }
+
+        .item_4 {
+            padding: 10px 0px 10px 20px;
         }
     }
 }

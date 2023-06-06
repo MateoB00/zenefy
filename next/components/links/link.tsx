@@ -7,10 +7,11 @@ export default function LinkAccueil(
         className: string,
         id?: string,
         onClick?: any
+        onMouseOver?: any
         children?: React.ReactNode
     }
 ) {
     return (
-        <a href={props.href} className={props.className} id={props.id} onClick={props.onClick}>{props.text}{props.children}</a>
+        <a href={props.href} className={props.className} id={props.id} onClick={props.onClick} onMouseOver={props.onMouseOver}>{props.text}{props.children}</a>
     );
 }

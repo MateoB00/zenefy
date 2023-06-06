@@ -7,7 +7,7 @@ export default function ButtonConnexion(
     props: {
         onClick?: any,
         text: string,
-        type: any,
+        type?: any,
         className: string,
     }
 ) {

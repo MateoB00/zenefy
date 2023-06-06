@@ -2,6 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Packages : include-media (breakpoints), swiper(slides)
 First, run the development server:
 
 ```bash

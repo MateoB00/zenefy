@@ -1,0 +1,36 @@
+@import '../../root';
+
+.third_bloc {
+    .swiper {
+        width: 100%;
+        height: 100%;
+        margin-top: 20px;
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            color: white;
+
+            /* Center slide text vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 50px;
+
+            p {
+                margin-bottom: 20px;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+.checked {
+    color: orange !important;
+}
+
+.fa-star {
+    color: #000
+}

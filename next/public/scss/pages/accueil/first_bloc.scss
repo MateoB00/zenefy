@@ -1,0 +1,33 @@
+@import '../../root';
+
+.firstBloc {
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary_color;
+
+    .bloc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 0px 0px 0px;
+        width: 40%;
+
+
+        .title {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        p {
+            padding: 50px 0px 0px 0px;
+            font-size: 1.2em;
+            text-align: center;
+
+            .zenefy {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+        }
+    }
+
+}
