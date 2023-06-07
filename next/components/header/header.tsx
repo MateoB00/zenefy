@@ -4,8 +4,11 @@ import '../../public/scss/components/header/header.scss';
 
 import LinkAccueil from '../links/link';
 
+export default function Header(
+    props: {
 
-export default function Header() {
+    }
+) {
 
     // Pour la bulle si elle met du temps à charger regarder la doc  https://nextjs.org/docs/pages/api-reference/components/image
     // const imageLoader = ({ src, width, quality }) => {
@@ -39,20 +42,29 @@ export default function Header() {
     return (
         <div className="header">
             <div className="menu">
-                <h1>ZENEFY</h1>
+                <h1>
+                    <LinkAccueil
+                        href='/accueil'
+                        text='ZENEFY'
+                    />
+                </h1>
                 <div className="mid_side">
                     <LinkAccueil
                         href='#'
-                        className='activite color_primary'
+                        className='activite'
                         text='Types d&apos;activités'
                     />
                     <LinkAccueil
                         href='#'
-                        className='lieu color_primary'
+                        className='lieu'
                         text='Renseignez un lieu'
                     />
                     <div className="search">
-                        <i className="fa-solid fa-magnifying-glass fa-lg"></i>
+                        <LinkAccueil
+                            href='/recherche'
+                        >
+                            <i className="fa-solid fa-magnifying-glass fa-lg"></i>
+                        </LinkAccueil>
                     </div>
                 </div>
                 <div className="right_side">
@@ -81,7 +93,7 @@ export default function Header() {
                 </p>
                 <p className="item_2">
                     <LinkAccueil
-                        href='#'
+                        href='/connexion'
                         text='Connexion'
                         className=''
                         id=''

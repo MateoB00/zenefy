@@ -12,7 +12,7 @@ export default function ThirdBlock() {
         <section className="third_bloc">
             <h3 className="title">Avis</h3>
             <SlideThirdBloc />
-            <p className="you">Nos clients nous, et pourquoi pas vous ?</p>
+            <p className="you">Nos clients nous donne leur avis, et pourquoi pas vous ?</p>
         </section>
     );
 }

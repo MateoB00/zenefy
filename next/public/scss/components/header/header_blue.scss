@@ -1,0 +1,45 @@
+@import '../../root';
+@import "./burger";
+
+.header {
+    background-color: $primary_color !important;
+
+    .menu {
+        h1 {
+            color: #ffff !important;
+        }
+
+        .mid_side {
+            border: 2px solid #ffff !important;
+
+            .activite {
+                border-right: 2px solid #ffff !important;
+                color: #fff !important;
+            }
+
+            .lieu {
+                color: #fff !important;
+            }
+
+            .search {
+                background-color: #ffff !important;
+
+                i {
+                    color: $primary_color !important;
+                }
+            }
+        }
+
+        .right_side {
+            background-color: #ffff !important;
+
+            .burger-icon {
+                @include burger(25px, 3px, 5px, $primary_color !important);
+            }
+
+            .menu-button.is-active .burger-icon {
+                @include burger-to-cross;
+            }
+        }
+    }
+}

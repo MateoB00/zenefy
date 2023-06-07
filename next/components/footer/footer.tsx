@@ -51,7 +51,7 @@ export default function Footer() {
                         <li>Préférences cookies
                         </li>
                         <li>
-                            Conditions d'utilisation
+                            Conditions d&apos;utilisation
                         </li>
                         <li>
                             F.A.Q

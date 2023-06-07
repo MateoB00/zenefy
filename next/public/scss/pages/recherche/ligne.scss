@@ -1,0 +1,25 @@
+@import '../../root';
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    padding: 20px 0px 20px 0px;
+    gap: 30px;
+}
+
+.ligne {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.prestation {
+    width: calc(20% - 16px);
+    // margin-bottom: 32px;
+    // padding: 16px;
+    background-color: $primary_color;
+    // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}

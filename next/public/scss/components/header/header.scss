@@ -19,7 +19,6 @@
         .mid_side {
             display: flex;
             align-items: center;
-            // width: fit-content;
             border: 2px solid $primary_color;
             border-radius: 50px;
             padding: 10px 10px 10px 40px;
@@ -27,17 +26,17 @@
             .activite {
                 border-right: 2px solid $primary_color;
                 padding: 0px 20px 0px 0px;
-
+                color: $primary_color;
                 font-weight: bold;
             }
 
             .lieu {
                 padding: 0px 65px 0px 20px;
+                color: $primary_color;
             }
 
             .search {
                 background-color: $primary_color;
-                // padding: 10px;
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
@@ -45,7 +44,6 @@
                 justify-content: center;
                 align-items: center;
 
-                // margin-left: 30px;
                 i {
                     color: white;
                 }

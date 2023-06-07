@@ -4,7 +4,7 @@ export default function LinkAccueil(
     props: {
         href: string,
         text?: string,
-        className: string,
+        className?: string,
         id?: string,
         onClick?: any
         onMouseOver?: any
