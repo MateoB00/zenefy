@@ -2,12 +2,13 @@ import * as React from 'react';
 
 export default function InputConnexion(
     props: {
-        className: any,
-        type: string | undefined;
-        name: string | undefined;
-        value: string | undefined;
-        placeHolder: string | undefined;
-        onChange: any
+        className?: any,
+        type?: string | undefined;
+        name?: string | undefined;
+        value?: string | undefined;
+        placeHolder?: string | undefined;
+        onChange?: any;
+        disabled?: boolean;
     }
 ) {
     return (
@@ -18,6 +19,7 @@ export default function InputConnexion(
             value={props.value}
             placeholder={props.placeHolder}
             onChange={props.onChange}
+            disabled={props.disabled}
         />
     );
 }

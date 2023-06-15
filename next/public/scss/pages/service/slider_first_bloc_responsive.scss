@@ -1,0 +1,13 @@
+@import '../../root';
+@import "../../breakpoints/breakpoints.scss";
+
+.swiper {
+    @media (max-width: 1500px) {
+        width: 60% !important;
+    }
+
+    @media (max-width: 1100px) {
+        width: 100% !important;
+
+    }
+}

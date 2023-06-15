@@ -3,6 +3,7 @@ import React from 'react';
 import ImagePage from '../../images/image'
 
 import '../../../public/scss/pages/accueil/slider_first_bloc.scss';
+import '../../../public/scss/pages/accueil/slider_first_bloc_responsive.scss';
 
 //SWIPERJS : https://swiperjs.com/
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -32,59 +33,54 @@ export default function SlideFirstBloc() {
             <SwiperSlide>
                 <p>Coiffure</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_coiffure.png'}
                     alt='coiffure'
                     width={350}
                     height={250}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </SwiperSlide>
 
             <SwiperSlide>
                 <p>Yoga</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_yoga.png'}
                     alt='yoga'
                     width={350}
                     height={250}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </SwiperSlide>
 
             <SwiperSlide>
                 <p>Massage</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_massage.png'}
                     alt='massage'
                     width={350}
                     height={250}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </SwiperSlide>
 
             <SwiperSlide>
                 <p>Musculation</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_musculation.png'}
                     alt='musculation'
                     width={350}
                     height={250}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </SwiperSlide>
 
             <SwiperSlide>
                 <p>SPA</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_spa.png'}
                     alt='spa'
                     width={350}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     height={250}
                 />
             </SwiperSlide>
@@ -92,7 +88,7 @@ export default function SlideFirstBloc() {
             <SwiperSlide>
                 <p>Manucure</p>
                 <ImagePage
-                    className=''
+                    className='image_slide'
                     src={'/images/accueil/categorie_manucure.png'}
                     alt='manucure'
                     width={350}

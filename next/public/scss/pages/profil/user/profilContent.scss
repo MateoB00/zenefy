@@ -1,0 +1,103 @@
+@import '../../../root';
+
+.profilContentButtons {
+    background-color: #fff;
+    color: $primary_color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px 50px 0px;
+
+
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .credit {
+        margin: 20px 0px 20px 0px;
+
+        span {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    }
+
+    .buttons {
+        text-align: center;
+        width: 50%;
+
+        button {
+            background-color: $primary_color;
+            color: #fff;
+            margin: 20px 0px 20px 0px;
+            height: fit-content;
+            padding: 10px 0px 10px 0px;
+        }
+    }
+}
+
+.profilContentInfos {
+    background-color: #fff;
+    color: $primary_color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px 50px 0px;
+
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .credit {
+        margin: 20px 0px 20px 0px;
+
+        span {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    }
+
+    .infos {
+        display: flex;
+        background-color: $primary_color;
+        width: 50%;
+        justify-content: center;
+        border-radius: 10px;
+        height: fit-content;
+        padding: 30px 0px 30px 0px;
+
+        .formInfos {
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            padding: 20px 0px 20px 0px;
+            gap: 20px;
+            color: #fff;
+
+            p {
+                text-align: center;
+            }
+
+            .inputForm {
+                text-align: center;
+                background-color: #fff;
+                color: $primary_color;
+                // width: 300%;
+                width: 30vw;
+                height: 3vh;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+
+.back {
+    width: 20%;
+    background-color: $primary_color;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 50px;
+}

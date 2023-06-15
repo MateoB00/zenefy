@@ -1,0 +1,79 @@
+@import '../../../root';
+
+.profilContentButtons {
+
+    h1 {
+        @media (max-width: 500px) {
+            font-size: 1.4em !important;
+        }
+    }
+
+    .credit {
+
+        span {}
+    }
+
+    .buttons {
+        @media (max-width: 1300px) {
+            width: 60% !important;
+        }
+
+        @media (max-width: 800px) {
+            width: 70% !important;
+        }
+
+        @media (max-width: 430px) {
+            width: 80% !important;
+        }
+
+        @media (max-width: 300px) {
+            width: 85% !important;
+        }
+
+
+
+        button {}
+    }
+}
+
+.infos {
+    @media (max-width: 1300px) {
+        width: 60% !important;
+    }
+
+    @media (max-width: 800px) {
+        width: 70% !important;
+    }
+
+    .formInfos {
+
+        p {}
+
+        .inputForm {
+            @media (max-width: 1100px) {
+                width: 40vw !important;
+            }
+
+            @media (max-width: 800px) {
+                width: 50vw !important;
+            }
+
+            @media (max-height: 550px) {
+                height: 5vh !important;
+            }
+
+        }
+    }
+}
+
+
+.back {
+
+    @media (max-width: 750px) {
+        width: 30% !important;
+    }
+
+    @media (max-width: 420px) {
+        width: 35% !important;
+    }
+}

@@ -1,0 +1,25 @@
+@import '../../../root';
+
+.thirdBloc {
+    background: #ffff;
+    color: $primary_color;
+
+    .localisation {
+        width: 85%;
+        margin: auto;
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+            font-weight: bold;
+            padding: 50px 0px 30px 0px;
+        }
+
+        .bloc_infos {
+            display: flex;
+            justify-content: space-around;
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}

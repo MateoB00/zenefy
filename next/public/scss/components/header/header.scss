@@ -5,6 +5,10 @@
     width: 100%;
     background-color: white;
 
+    .menu_mobile {
+        display: none;
+    }
+
     .menu {
         display: flex;
         justify-content: space-between;
@@ -81,11 +85,12 @@
         top: 7%;
         right: 2%;
         height: fit-content;
-        width: 15%;
+        width: fit-content;
         border: 1px solid grey;
+        z-index: 2;
 
         .item_1 {
-            padding: 10px 0px 10px 20px;
+            padding: 10px 40px 10px 20px;
         }
 
         .item_2 {
@@ -116,27 +121,26 @@
         display: block;
         background-color: #fff;
         color: $primary_color;
-        position: absolute;
         border-radius: 20px;
-        top: 17%;
-        right: 17.3%;
         height: fit-content;
-        width: 15%;
+        width: fit-content;
         border: 1px solid grey;
 
-        .item_1 {
+        .item_1_zenefy {
+            padding: 10px 40px 10px 20px;
+        }
+
+        .item_2_zenefy {
             padding: 10px 0px 10px 20px;
         }
 
-        .item_2 {
+        .item_3_zenefy {
             padding: 10px 0px 10px 20px;
+            background-image: $background_gold_gradient;
+            border: 1px solid grey;
         }
 
-        .item_3 {
-            padding: 10px 0px 10px 20px;
-        }
-
-        .item_4 {
+        .item_4_zenefy {
             padding: 10px 0px 10px 20px;
         }
     }

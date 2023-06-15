@@ -1,0 +1,45 @@
+@import '../../../root';
+
+.firstBloc {
+    @media (max-width: 1210px) {
+        justify-content: center;
+    }
+
+    .firstImage,
+    .secondImage {
+
+        @media (max-width: 1600px) {
+            width: 25%;
+        }
+
+        @media (max-width: 1210px) {
+            display: none;
+        }
+
+        @media (max-width: 420px) {
+            display: none !important;
+        }
+    }
+
+    .bloc {
+
+        @media (max-width: 1600px) {
+            width: 50%;
+        }
+
+        @media (max-width: 1210px) {
+            width: 100%;
+        }
+
+
+        .title {
+            @media (max-width: 1210px) {
+                font-size: 2.4em;
+            }
+
+            @media (max-width: 420px) {
+                font-size: 2.1em;
+            }
+        }
+    }
+}

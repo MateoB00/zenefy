@@ -1,0 +1,36 @@
+@import '../../root.scss';
+
+.bloc_prestations {
+    border: 2px solid $primary_color;
+    border-radius: 20px;
+
+    .prestation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px 20px 40px;
+        border-bottom: 2px solid rgb(212, 212, 212);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        p {
+            font-weight: 500;
+        }
+
+        .infos {
+            display: flex;
+            align-items: center;
+            width: 20%;
+            gap: 40px;
+
+            .choice {
+                width: 40%;
+                background-color: $primary_color;
+                color: #fff;
+                border-radius: 10px;
+            }
+        }
+    }
+}

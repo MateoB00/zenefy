@@ -1,0 +1,49 @@
+@import '../../../root';
+
+.bloc_prestations {
+
+    .prestation {
+        @media (max-width: 1190px) {
+            flex-direction: column;
+        }
+
+        .infos {
+            @media (max-width: 1750px) {
+                width: 25% !important;
+            }
+
+            @media (max-width: 1410px) {
+                width: 30% !important;
+            }
+
+            @media (max-width: 1190px) {
+                width: 80% !important;
+                justify-content: center;
+                padding-top: 20px;
+            }
+
+            @media (max-width: 470px) {
+                width: 100% !important;
+                font-size: 0.8em;
+            }
+
+            .choice {
+                @media (max-width: 1190px) {
+                    width: 20% !important;
+                }
+
+                @media (max-width: 700px) {
+                    width: 25% !important;
+                }
+
+                @media (max-width: 570px) {
+                    width: 30% !important;
+                }
+
+                @media (max-width: 470px) {
+                    width: 35% !important;
+                }
+            }
+        }
+    }
+}

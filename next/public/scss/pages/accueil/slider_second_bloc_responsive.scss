@@ -1,0 +1,15 @@
+@import '../../root';
+
+.second_bloc {
+    .swiper {
+        .swiper-slide {
+            img {
+
+                @media (max-width: 550px) {
+                    height: 20vh !important;
+
+                }
+            }
+        }
+    }
+}

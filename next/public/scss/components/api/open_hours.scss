@@ -1,0 +1,22 @@
+@import '../../root.scss';
+
+.opening_hours {
+    border: 2px solid $primary_color;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #FFFAFA;
+
+    h3 {
+        font-size: 1.5em;
+        font-weight: bold;
+        padding: 10px 0px 0px 0px;
+    }
+
+    ol {
+        padding: 20px 40px 0px 40px;
+    }
+
+    li {
+        padding: 28px 0px 0px 0px;
+    }
+}

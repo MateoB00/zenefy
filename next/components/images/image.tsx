@@ -8,6 +8,7 @@ export default function ImagePage(
         width: number;
         height: number;
         sizes?: any;
+        loading?: 'lazy' | 'eager';
     }
 ) {
     return (
@@ -18,6 +19,7 @@ export default function ImagePage(
             width={props.width}
             height={props.height}
             sizes={props.sizes}
+            loading={props.loading}
         />
     );
 }

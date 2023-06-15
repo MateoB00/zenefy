@@ -1,21 +1,26 @@
-@import '../../root';
+@import '../../../root';
 
 .firstBloc {
     display: flex;
     justify-content: space-between;
     background-color: $primary_color;
+    height: fit-content;
+
+    .firstImage,
+    .secondImage {}
 
     .bloc {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 50px 0px 0px 0px;
+        // align-items: center;
+        padding: 50px 20px 0px 20px;
         width: 40%;
 
 
         .title {
             font-size: 3em;
             font-weight: bold;
+            text-align: center
         }
 
         p {

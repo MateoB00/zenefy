@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import '../../public/scss/components/footer/footer.scss';
 
-import LinkAccueil from '../links/link';
+import Link from '../links/link';
 
 
 export default function Footer() {
@@ -18,7 +18,10 @@ export default function Footer() {
                         <li>NOS ACTIVITES
                         </li>
                         <li>
-                            NOS NOUVEAUTES
+                            <Link
+                                href='/nos_nouveautes'
+                                text='NOS NOUVEAUTES'
+                            />
                         </li>
                         <li>
                             A PROPOS
@@ -28,7 +31,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div>
+                <div className="footer_mobile">
                     <h1 className="fs-4 text-center">Mon compte</h1>
                     <ul className="list_footer">
                         <li>
@@ -45,7 +48,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="my-auto">
+                <div className="footer_mobile">
                     <h1 className="fs-4 text-center">Autres</h1>
                     <ul className="list_footer">
                         <li>Préférences cookies

@@ -25,6 +25,12 @@ export default function SlideThirdBloc(
             }}
             modules={[Autoplay, Pagination]}
             className="mySwiper"
+            breakpoints={{
+                1100: { slidesPerView: 3, spaceBetween: 100 },
+                800: { slidesPerView: 2, spaceBetween: 100 },
+                550: { slidesPerView: 2, spaceBetween: 50 },
+                0: { slidesPerView: 1 }
+            }}
         >
             <SwiperSlide>
                 <div>

@@ -1,0 +1,32 @@
+@import '../../../root';
+
+.fourthBloc {
+    .blocReview {
+        @media (max-width: 1400px) {
+            width: 60% !important;
+        }
+
+        @media (max-width: 700px) {
+            width: 70% !important;
+        }
+
+        @media (max-width: 490px) {
+            width: 80% !important;
+        }
+
+        .headerReview {
+
+            .buttonHeaderReview {
+                @media (max-width: 490px) {
+                    font-size: 1em !important;
+                }
+            }
+        }
+
+        .contentReviewValueBloc {
+            @media (max-width: 670px) {
+                flex-direction: column;
+            }
+        }
+    }
+}

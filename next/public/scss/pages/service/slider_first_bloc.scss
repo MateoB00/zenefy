@@ -1,0 +1,17 @@
+@import '../../root';
+
+.firstBloc {
+    .swiper {
+        z-index: 0;
+        width: 45%;
+        height: auto !important;
+        margin: 0 !important;
+        // border: 2px solid purple;
+
+        .image_slide {
+            height: 40vh !important;
+            width: 50vw !important;
+            border-radius: 25px;
+        }
+    }
+}

@@ -3,9 +3,10 @@ import React from 'react';
 import ImagePage from '../../components/images/image'
 import SlideFirstBloc from '../../components/sliders/accueil/slider_first_bloc';
 
-import '../../public/scss/pages/accueil/first_bloc.scss';
+import '../../public/scss/pages/accueil/first_bloc/first_bloc.scss';
+import '../../public/scss/pages/accueil/first_bloc/first_bloc_responsive.scss';
 
-export default function FirstBloc() {
+export default function FirstBlocAccueil() {
 
     return (
         <section className="firstBloc">
@@ -15,6 +16,7 @@ export default function FirstBloc() {
                 alt='firstImage'
                 width={500}
                 height={500}
+                loading={'lazy'}
             />
             <div className='bloc'>
                 <h1 className='title'>Prenez soin de vos équipes.</h1>
@@ -32,6 +34,7 @@ export default function FirstBloc() {
                 alt='firstImage'
                 width={500}
                 height={500}
+                loading={'lazy'}
             />
 
         </section>

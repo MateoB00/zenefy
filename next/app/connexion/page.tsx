@@ -8,7 +8,6 @@ import ButtonConnexion from '../../components/buttons/button';
 
 
 export default function Page() {
-
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [showPassword, setShowPassword] = React.useState(false);
