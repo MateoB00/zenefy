@@ -4,17 +4,26 @@ import {
     Delete,
     Get,
     Param,
-    Patch,
+    Request,
     Post,
-    Put
+    Put,
+    UseGuards
 } from '@nestjs/common';
 
 import { User } from "./user.entity";
 import { UserService } from "./user.service";
+import { ReservationService } from "../reservation/reservation.service";
+import { AuthGuard } from '@nestjs/passport';
+import { PartnerCompany } from 'src/partnerCompany/partnercompany.entity';
+import { PartnerCompanyService } from 'src/partnerCompany/partnercompany.service';
 
 @Controller('user')
 export class UserController {
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private reservationService: ReservationService,
+        private partnerCompanyService: PartnerCompanyService
+    ) { }
 
     @Post()
     create(@Body() user: User): Promise<User> {
@@ -22,29 +31,43 @@ export class UserController {
     }
 
     // id dans l'url
-    @Get(':id')
-    findById(@Param('id') id: number) {
-        return this.userService.findOneById(id)
+    @Get('me')
+    @UseGuards(AuthGuard('jwt'))
+    async findById(@Request() req: any) {
+        const loggedInUser = req.user
+        return this.userService.findOneById(loggedInUser.id)
     }
-
-    // @Get('client_company/:client_company_id')
-    // findAllByClientCompany(@Param('client_company_id') client_company_id) {
-    //     console.log(client_company_id)
-    //     return this.userService.findAllByClientCompany(client_company_id)
-    // }
 
     @Get()
     findMany() {
         return this.userService.findMany()
     }
 
-    @Put(':id')
-    update(@Param('id') id: number, @Body() user: User): Promise<User> {
-        return this.userService.update(id, user)
+    @Put('me')
+    @UseGuards(AuthGuard('jwt'))
+    async update(@Request() req: any, @Body() user: User) {
+        const loggedInUser = req.user
+        return this.userService.update(loggedInUser.id, user)
     }
 
-    @Delete(':id')
-    delete(@Param('id') id: number) {
-        return this.userService.delete(id)
+    @Delete('me')
+    @UseGuards(AuthGuard('jwt'))
+    async delete(@Request() req: any) {
+        const loggedInUser = req.user
+        return this.userService.delete(loggedInUser.id)
+    }
+
+    //Relations
+    @Get(':user_id/reservations')
+    @UseGuards(AuthGuard('jwt'))
+    findAllReservations(@Param('user_id') user_id: number) {
+        return this.reservationService.findByUser(user_id)
+    }
+
+    @Put(':partner_company_id/partner')
+    @UseGuards(AuthGuard('jwt'))
+    updatePartnerCompany(@Param('partner_company_id') id: number, @Request() req: any, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
+        const loggedInUser = req.user
+        return this.partnerCompanyService.update(id, loggedInUser, partnerCompany)
     }
 }

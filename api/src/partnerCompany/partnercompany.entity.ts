@@ -50,4 +50,5 @@ export class PartnerCompany {
 
     @OneToMany(type => Reservation, reservation => reservation.partner_company)
     reservations: Reservation[];
+    modo_partner_company: number;
 }

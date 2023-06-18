@@ -37,15 +37,6 @@ export class ReservationService {
         return fetchClientById;
     }
 
-    // findByUser(user_id: number) {
-    //     const fetchByUserId = this.reservationRepository.find(
-    //         // exemple de condition dans le findMany
-    //         { where: { user_id: user_id } }
-    //     )
-
-    //     return fetchByUserId;
-    // }
-
     findMany() {
         const fetchAll = this.reservationRepository.find(
             //exemple de condition dans le findMany
@@ -65,5 +56,17 @@ export class ReservationService {
         const updateReservation = await this.reservationRepository.save(existingReservation)
 
         return updateReservation
+    }
+
+
+    //Relations 
+
+    findByUser(user_id: number) {
+        const fetchByUserId = this.reservationRepository.find(
+            // exemple de condition dans le findMany
+            { where: { user: { id: user_id } } }
+        )
+
+        return fetchByUserId;
     }
 }

@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { PartnerCompany } from './partnercompany.entity';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class PartnerCompanyService {
@@ -44,11 +45,18 @@ export class PartnerCompanyService {
         return fetchAll;
     }
 
-    async update(id: number, partnerCompany: PartnerCompany) {
+    async update(id: number, user: User, partnerCompany: PartnerCompany) {
+
+        console.log(user)
+        if (user.modo_partner_company === false) {
+            throw new UnauthorizedException()
+        }
+
         const existingPartnerCompany = await this.partnerCompanyRepository.findOne({
             where: { id: id }
         })
 
+        console.log(existingPartnerCompany)
         Object.assign(existingPartnerCompany, partnerCompany)
 
         const updatePartnerCompany = await this.partnerCompanyRepository.save(existingPartnerCompany)

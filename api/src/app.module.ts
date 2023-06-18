@@ -10,6 +10,7 @@ import { ReservationModule } from './reservation/reservation.module';
 import { ServiceModule } from './service/service.module';
 import { CategoryServiceModule } from './categoryService/categoryservice.module';
 import { SubscriptionModule } from './subscription/subscription.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { SubscriptionModule } from './subscription/subscription.module';
     ReservationModule,
     ServiceModule,
     CategoryServiceModule,
-    SubscriptionModule
+    SubscriptionModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

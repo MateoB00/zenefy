@@ -31,8 +31,8 @@ export class PartnerCompanyController {
         return this.partnerCompanyService.findMany()
     }
 
-    @Put(':id')
-    update(@Param('id') id: number, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
-        return this.partnerCompanyService.update(id, partnerCompany)
-    }
+    // @Put(':id')
+    // update(@Param('id') id: number, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
+    //     return this.partnerCompanyService.update(id, partnerCompany)
+    // }
 }

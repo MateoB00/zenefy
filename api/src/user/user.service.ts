@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -17,12 +18,13 @@ export class UserService {
             throw new Error('Utilisateur déjà existant');
         }
 
-        // const hashedPassword = await bcrypt.hash(user.password, 10);
+        const hashedPassword = await bcrypt.hash(user.password, 10);
 
         const newUser = {
             first_name: user.first_name,
             last_name: user.last_name,
             email: user.email,
+            password: hashedPassword,
             address: user.address,
             num_phone: user.num_phone,
             client_company: user.client_company,
@@ -38,6 +40,11 @@ export class UserService {
 
     async findOneById(id: number) {
         const fetchUserById = await this.userRepository.findOne({
+            relations: {
+                reservations: true,
+                partner_company: true,
+                client_company: true
+            },
             where: { id: id }
         })
 
@@ -49,6 +56,20 @@ export class UserService {
         return fetchUserById;
     }
 
+    async findOneByEmail(email: string): Promise<User | undefined> {
+        const fetchUserByEmail = await this.userRepository.findOne({
+
+            where: { email: email }
+        })
+
+        if (!fetchUserByEmail) {
+            console.log('Utilisateur non trouvé');
+            throw new Error('Utilisateur  non trouvé.');
+        }
+
+        return fetchUserByEmail;
+    }
+
     findMany() {
         const fetchAll = this.userRepository.find(
             //exemple de condition dans le findMany
@@ -57,15 +78,6 @@ export class UserService {
 
         return fetchAll;
     }
-
-    // findAllByClientCompany(client_company_id) {
-    //     const fetchAll = this.userRepository.find(
-    //         //exemple de condition dans le findMany
-    //         { where: { client_company_id: client_company_id } }
-    //     )
-    //     console.log(fetchAll);
-    //     return fetchAll;
-    // }
 
     async update(id: number, user: User) {
         const existingUser = await this.userRepository.findOne({
