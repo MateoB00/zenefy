@@ -3,21 +3,25 @@ import {
     Controller,
     Get,
     Param,
-    Patch,
+    Request,
     Post,
-    Put
+    Put,
+    UseGuards
 } from '@nestjs/common';
 
 import { Reservation } from "./reservation.entity";
 import { ReservationService } from "./reservation.service";
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('reservation')
 export class ReservationController {
     constructor(private reservationService: ReservationService) { }
 
     @Post()
-    create(@Body() reservation: Reservation): Promise<Reservation> {
-        return this.reservationService.create(reservation)
+    @UseGuards(AuthGuard('jwt'))
+    create(@Request() req: any, @Body() reservation: Reservation): Promise<Reservation> {
+        const loggedInUser = req.user
+        return this.reservationService.create(reservation, loggedInUser)
     }
 
     // id dans l'url
@@ -26,10 +30,10 @@ export class ReservationController {
         return this.reservationService.findOneById(id)
     }
 
-    // @Get('user/:user_id')
-    // findByUser(@Param('user_id') user_id: number) {
-    //     return this.reservationService.findByUser(user_id)
-    // }
+    @Get('partner/:partnerId')
+    findByUser(@Param('partnerId') partnerId: number) {
+        return this.reservationService.findByPartner(partnerId)
+    }
 
     @Get()
     findMany() {

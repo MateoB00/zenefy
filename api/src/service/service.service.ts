@@ -8,6 +8,7 @@ export class ServiceService {
     constructor(@InjectRepository(Service) private serviceRepository: Repository<Service>) { }
 
     async create(service: Service) {
+
         const newService = {
             partner_company: service.partner_company,
             category_service: service.category_service,
@@ -51,7 +52,6 @@ export class ServiceService {
                 }
             }
         }
-            // exemple de condition dans le findMany
         )
 
         return fetchByServiceId;
@@ -80,5 +80,16 @@ export class ServiceService {
 
     async delete(id: number) {
         await this.serviceRepository.delete(id)
+    }
+
+    async findByCategoryAndCity(category: string, city: string) {
+        const services = await this.serviceRepository.createQueryBuilder('service')
+            .leftJoinAndSelect('service.partner_company', 'partner_company')
+            .leftJoinAndSelect('service.category_service', 'category_service')
+            .where('LOWER(category_service.name) = LOWER(:category)', { category: category })
+            .andWhere('LOWER(partner_company.city) = LOWER(:city)', { city: city })
+            .getMany();
+
+        return services
     }
 }

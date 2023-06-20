@@ -5,10 +5,10 @@ import { CategoryService } from '../categoryService/categoryservice.entity';
 import { Reservation } from '../reservation/reservation.entity';
 
 enum AverageTimeForEnum {
-    TEN_MINUTES = '10 minutes',
-    THIRTY_MINUTES = '30 minutes',
-    ONE_HOUR = '1 hour',
-    TWO_HOURS = '2 hours',
+    TEN_MINUTES = '10 min',
+    THIRTY_MINUTES = '30 min',
+    ONE_HOUR = '1 h',
+    TWO_HOURS = '2 h',
 }
 
 @Entity({ name: 'service' })

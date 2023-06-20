@@ -8,15 +8,16 @@ import { User } from 'src/user/user.entity';
 export class ReservationService {
     constructor(@InjectRepository(Reservation) private reservationRepository: Repository<Reservation>) { }
 
-    async create(reservation: Reservation) {
+    async create(reservation: Reservation, user: User) {
         const newReservation = {
             done: reservation.done,
             accepted: reservation.accepted,
             partner_company: reservation.partner_company,
-            user: reservation.user,
+            user: user,
             service: reservation.service,
             started_at: reservation.started_at,
             ended_at: reservation.ended_at,
+            title: reservation.title,
         }
 
         const createdReservation = await this.reservationRepository.save(
@@ -71,6 +72,16 @@ export class ReservationService {
             // exemple de condition dans le findMany
             where: {
                 user: { id: user.id }
+            }
+        })
+
+        return fetchByUserId;
+    }
+
+    findByPartner(partnerId: number) {
+        const fetchByUserId = this.reservationRepository.find({
+            where: {
+                partner_company: { id: partnerId }
             }
         })
 

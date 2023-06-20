@@ -15,6 +15,9 @@ export class Reservation {
     })
     done: boolean;
 
+    @Column()
+    title: string;
+
     @Column({
         default: false
     })
@@ -25,7 +28,7 @@ export class Reservation {
     user: User;
 
     //foreign key
-    @ManyToOne(type => Service, service => service.reservations)
+    @ManyToOne(type => Service, service => service.reservations, { nullable: true })
     service: Service;
 
     //foreign key
