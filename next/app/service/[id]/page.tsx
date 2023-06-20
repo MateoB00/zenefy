@@ -13,7 +13,7 @@ import FirstBlocService from './first_bloc'
 import SecondBlocService from './second_bloc'
 import ThirdBlocService from './third_bloc'
 import FourthBlocService from './fourth_bloc'
-import Calendar from '../../../components/calendar/calendar'
+import Calendar from '../../../components/calendar/calendarUser'
 import Button from '../../../components/buttons/button'
 
 import { getService } from '../../../api/service'
@@ -51,7 +51,10 @@ export default function Page() {
         return (
             <div className="calendarReactUserSide">
                 <Header />
-                <Calendar />
+                {
+                    service ?
+                        <Calendar partnerId={service['partner_company'].id} /> : ''
+                }
                 <div className='divForButton'>
                     <Button
                         text='Retour'
@@ -70,7 +73,7 @@ export default function Page() {
                 service ?
                     <div>
                         <FirstBlocService onToggleDispo={toggleDispo} companyInfos={service ? service['partner_company'] : null} />
-                        <SecondBlocService />
+                        <SecondBlocService serviceData={service} />
                         <ThirdBlocService googleCompanyInfos={googleCompanyData ? googleCompanyData : null} />
                         <FourthBlocService googleCompanyInfos={googleCompanyData ? googleCompanyData['companyInfos'] : null} />
                     </div>

@@ -9,6 +9,8 @@ export default function InputConnexion(
         placeHolder?: string | undefined;
         onChange?: any;
         disabled?: boolean;
+        onClick?: any;
+        id?: any
     }
 ) {
     return (
@@ -20,6 +22,8 @@ export default function InputConnexion(
             placeholder={props.placeHolder}
             onChange={props.onChange}
             disabled={props.disabled}
+            onClick={props.onClick}
+            id={props.id}
         />
     );
 }

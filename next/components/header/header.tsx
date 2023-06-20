@@ -5,6 +5,7 @@ import '../../public/scss/components/header/header.scss';
 import '../../public/scss/components/header/header_responsive.scss';
 
 import LinkAccueil from '../links/link';
+import Input from '../inputs/input';
 import { authLogout, getMe } from '../../api/user'
 
 
@@ -15,6 +16,9 @@ export default function Header() {
 
     const [showBurgerMenu, setShowBurgerMenu] = React.useState(false)
     const [showZenefyBurgerMenu, setZenefyShowBurgerMenu] = React.useState(false)
+
+    const [selectedCategory, setSelectedCategory] = React.useState('');
+    const [selectedLieu, setSelectedLieu] = React.useState('')
 
     React.useEffect(() => {
         const fetchUserData = async () => {
@@ -54,6 +58,9 @@ export default function Header() {
         showZenefyBurgerMenu === true ? setZenefyShowBurgerMenu(false) : setZenefyShowBurgerMenu(true)
     }
 
+    const handleRedirectionServices = async () => {
+        window.location.href = `/recherche?city=${selectedLieu}&category=${selectedCategory}`;
+    }
     return (
         <div className="header">
             <div className="menu">
@@ -64,19 +71,26 @@ export default function Header() {
                     />
                 </h1>
                 <div className="mid_side">
-                    <LinkAccueil
-                        href='#'
-                        className='activite'
-                        text='Types d&apos;activités'
-                    />
-                    <LinkAccueil
-                        href='#'
+                    <select name="category" id="category" className="activite" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                        <option value="">Types d&apos;activités</option>
+                        <option value="coiffure">Coiffure</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="massage">Massage</option>
+                        <option value="musculation">Musculation</option>
+                        <option value="spa">Spa</option>
+                        <option value="manucure">Manucure</option>
+                    </select>
+                    <Input
+                        type='text'
                         className='lieu'
-                        text='Renseignez un lieu'
+                        value={selectedLieu}
+                        onChange={(e) => setSelectedLieu(e.target.value)}
+                        placeHolder='Ville'
                     />
                     <LinkAccueil
                         className='search'
-                        href='/recherche'
+                        // href='/recherche'
+                        onClick={handleRedirectionServices}
                     >
                         <i className="fa-solid fa-magnifying-glass fa-lg"></i>
                     </LinkAccueil>
@@ -121,15 +135,21 @@ export default function Header() {
                     </div>
                 </div>
                 <div className="bot_side">
-                    <LinkAccueil
-                        href='#'
-                        className='activite'
-                        text='Types d&apos;activités'
-                    />
-                    <LinkAccueil
-                        href='#'
+                    <select name="pets" id="pet-select" className="activite" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                        <option value=""><p>Types d&apos;activités</p></option>
+                        <option value="coiffure"><p>Coiffure</p></option>
+                        <option value="yoga"><p>Yoga</p></option>
+                        <option value="massage"><p>Massage</p></option>
+                        <option value="musculation"><p>Musculation</p></option>
+                        <option value="spa"><p>Spa</p></option>
+                        <option value="manucure"><p>Manucure</p></option>
+                    </select>
+                    <Input
+                        type='text'
                         className='lieu'
-                        text='Renseignez un lieu'
+                        value={selectedLieu}
+                        onChange={(e) => setSelectedLieu(e.target.value)}
+                        placeHolder='Ville'
                     />
                     <LinkAccueil
                         className='search'

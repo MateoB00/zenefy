@@ -22,6 +22,7 @@
         .infos {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             width: 20%;
             gap: 40px;
 
@@ -30,7 +31,53 @@
                 background-color: $primary_color;
                 color: #fff;
                 border-radius: 10px;
+                text-align: center;
+                height: 3.5vh;
             }
         }
+    }
+}
+
+.divValide {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-image: radial-gradient(circle farthest-side, #ffe091, #f8b500);
+    height: fit-content;
+    width: 20%;
+    margin: 15px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 15px;
+    gap: 20px;
+
+    .buttonSubmit {
+        width: 30%;
+        border: 1px solid #f8b500;
+        margin: auto;
+        background-color: #FFFAFA;
+        border-radius: 10px;
+    }
+
+    p {
+        text-align: right;
+        width: 10%;
+        cursor: pointer;
+        padding: 0px 0px 0px 5px;
+        font-size: 1.5em;
+        color: red;
+        font-weight: bold;
+    }
+
+    .choice {
+        margin: auto;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #fff;
+        padding: 0 !important;
+        font-size: 1.5em !important;
     }
 }

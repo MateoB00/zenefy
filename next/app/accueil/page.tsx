@@ -8,7 +8,7 @@ import SecondBlocAccueil from './second_bloc';
 import ThirdBlocAccueil from './third_bloc';
 import Footer from '../../components/footer/footer'
 
-export default async function Page() {
+export default function Page() {
 
     return (
         <>

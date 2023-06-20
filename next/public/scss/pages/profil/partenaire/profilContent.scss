@@ -65,6 +65,60 @@
         color: white;
         overflow-x: auto;
     }
+
+    .form {
+        display: flex;
+        background-color: $primary_color;
+        width: 50%;
+        justify-content: center;
+        border-radius: 10px;
+        height: fit-content;
+        margin-top: 30px;
+        padding: 30px 0px 30px 0px;
+        color: white;
+        overflow-x: auto;
+
+        .formInfos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0px 20px 0px;
+            gap: 20px;
+            color: #fff;
+
+            select {
+                border: none;
+                border-right: 2px solid $primary_color;
+                outline: none;
+                color: $primary_color;
+                font-weight: bold;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-repeat: no-repeat;
+                background-position: right .7em top 50%;
+                padding-right: 1.5em;
+                font-size: 16px;
+                padding: 0px 20px 0px 0px;
+                font-weight: bold;
+                width: 100%;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            .inputForm {
+                text-align: center;
+                background-color: #fff;
+                color: $primary_color;
+                // width: 300%;
+                width: 30vw;
+                height: 3vh;
+                border-radius: 10px;
+            }
+        }
+    }
 }
 
 

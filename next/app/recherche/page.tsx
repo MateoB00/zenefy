@@ -11,7 +11,7 @@ import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import Lignes from './lignes'
 
-export default async function Page() {
+export default function Page() {
 
     return (
         <>

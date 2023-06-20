@@ -12,13 +12,15 @@
         .mid_side {
             border: 2px solid #ffff !important;
 
-            .activite {
+            select.activite {
                 border-right: 2px solid #ffff !important;
                 color: #fff !important;
+                background-color: $primary_color !important;
             }
 
             .lieu {
                 color: #fff !important;
+                background-color: $primary_color !important;
             }
 
             .search {

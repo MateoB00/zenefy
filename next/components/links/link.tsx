@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LinkAccueil(
     props: {
-        href: string,
+        href?: string,
         text?: string,
         className?: string,
         id?: string,

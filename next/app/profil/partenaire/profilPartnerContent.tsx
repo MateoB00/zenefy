@@ -4,10 +4,11 @@ import * as React from 'react';
 import cookieCutter from 'cookie-cutter';
 import { getMe } from '../../../api/user'
 import { updatePartner, getServices } from '../../../api/userPartner'
+import { createService } from '../../../api/service'
 
 import Button from '../../../components/buttons/button'
 import Input from '../../../components/inputs/input'
-import Calendar from '../../../components/calendar/calendar'
+import Calendar from '../../../components/calendar/calendarPartner'
 
 import '../../../public/scss/pages/service/calendar/calendar.scss';
 import '../../../public/scss/pages/profil/partenaire/profilContent.scss';
@@ -32,9 +33,13 @@ export default function ProfilEntrepriseContent() {
     const [partnerCompanyPhone, setPartnerCompanyPhone] = React.useState()
 
     const [partnerServices, setPartnerServices] = React.useState()
-
-
     const [responseForm, setResponseForm] = React.useState()
+
+    const [nameService, setNameService] = React.useState()
+    const [priceService, setPriceService] = React.useState()
+    const [descriptionService, setDescriptionService] = React.useState()
+    const [averageTimeService, setAverageTimeService] = React.useState()
+    const [categoryService, setCategoryService] = React.useState()
 
     React.useEffect(() => {
         const fetchUserAndPartnerData = async () => {
@@ -81,6 +86,23 @@ export default function ProfilEntrepriseContent() {
         setResponseForm(response)
     }
 
+    const handleAddServiceSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+
+        const userToken = cookieCutter.get('SESSID')
+        const serviceData = {
+            name: nameService,
+            price: priceService,
+            average_time: averageTimeService,
+            partner_company: partnerCompanyId,
+            code_postal: partnerCompanyCodePostal,
+            category_service: null
+        }
+        const response = await createService(userToken, serviceData)
+
+        setResponseForm(response)
+    }
+
     const handleBackClick = () => {
         setShowReservations(false)
         setShowServices(false)
@@ -91,7 +113,12 @@ export default function ProfilEntrepriseContent() {
         return (
             <div className="calendarReactUserSide">
                 <h1 className="titleReservations">Vos Réservations</h1>
-                <Calendar />
+                <p className="disclaimer">Veillez à rentrer vos reservations dans la partie DAY</p>
+                {
+                    partnerCompanyId ?
+                        <Calendar partnerId={partnerCompanyId} /> : ''
+
+                }
                 <div className='divForButton'>
                     <Button
                         text='Retour'
@@ -138,6 +165,51 @@ export default function ProfilEntrepriseContent() {
                     className='back'
                     onClick={handleBackClick}
                 />
+                <div className='form'>
+                    <form action="" className="formInfos" onSubmit={handleAddServiceSubmit}>
+                        <p>Nom du service</p>
+                        <Input
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setNameService(e.target.value)} />
+                        <p>Prix</p>
+                        <Input
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setPriceService(e.target.value)}
+                        />
+                        <p>Description</p>
+                        <Input
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setDescriptionService(e.target.value)}
+                        />
+                        <p>Temps moyen</p>
+
+                        <select name="category" id="category" className="activite" value={averageTimeService} onChange={(e) => setAverageTimeService(e.target.value)}>
+                            <option value="">Choisissez</option>
+                            <option value="1 h">1 h</option>
+                            <option value="2 h">2 h</option>
+                            <option value="30 min">30 min</option>
+                            <option value="10 min">10min</option>
+                        </select>
+                        <p>Catégorie</p>
+                        <select name="category" id="category" className="activite" value={categoryService} onChange={(e) => setCategoryService(e.target.value)}>
+                            <option value="">Choisissez</option>
+                            <option value="Coiffure">Coiffure</option>
+                            <option value="Spa">Spa</option>
+                            <option value="Manucure">Manucure</option>
+                            <option value="Massage">Massage</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Musculation">Musculation</option>
+                        </select>
+                        <Button
+                            text='Ajouter un service'
+                            className='back submit'
+                            type='submit'
+                        />
+                    </form>
+                </div>
             </div>
         )
     }
