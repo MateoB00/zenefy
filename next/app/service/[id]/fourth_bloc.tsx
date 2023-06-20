@@ -1,10 +1,15 @@
+import * as React from 'react';
+
 import '../../../public/scss/pages/service/fourth_bloc/fourth_bloc.scss';
 import '../../../public/scss/pages/service/fourth_bloc/fourth_bloc_responsive.scss';
 
 import ButtonConnexion from '../../../components/buttons/button';
 
-export default function FourthBlocService() {
-
+export default function FourthBlocService({ googleCompanyInfos }) {
+    const [googleCompany, setGoogleCompany] = React.useState(googleCompanyInfos)
+    console.log('googleCompanyInfos')
+    console.log(googleCompany)
+    console.log('googleCompanyInfos')
     const handleAvisButtonClick = () => {
         const buttonHeaderAvis = document.getElementById("buttonHeaderAvis")
         const contentReviewValueBloc = document.querySelector('.contentReviewValueBloc')
@@ -55,7 +60,7 @@ export default function FourthBlocService() {
                     </div>
                     <div className="reviewValue">
                         <h4>Google</h4>
-                        <p>Note : 4.5/5</p>
+                        <p>Note : {googleCompany && googleCompany.rating}/5</p>
                     </div>
                 </div>
 

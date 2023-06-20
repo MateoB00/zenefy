@@ -1,5 +1,7 @@
+@import '../../root';
+
 .map-container {
     width: 50%;
     height: 50vh;
-    border: 2px solid red
+    border: 2px solid $primary_color
 }

@@ -1,6 +1,9 @@
 'use client'
 
 import * as React from 'react';
+import cookieCutter from 'cookie-cutter';
+import { getMe } from '../../../api/user'
+import { updatePartner, getServices } from '../../../api/userPartner'
 
 import Button from '../../../components/buttons/button'
 import Input from '../../../components/inputs/input'
@@ -9,12 +12,74 @@ import Calendar from '../../../components/calendar/calendar'
 import '../../../public/scss/pages/service/calendar/calendar.scss';
 import '../../../public/scss/pages/profil/partenaire/profilContent.scss';
 import '../../../public/scss/pages/profil/partenaire/profilContentResponsive.scss';
+import '../../../public/scss/pages/profil/table.scss';
 
 export default function ProfilEntrepriseContent() {
     const [showServices, setShowServices] = React.useState(false)
     const [showReservations, setShowReservations] = React.useState(false)
     const [showInfos, setShowInfos] = React.useState(false)
     const [showProfil, setShowProfil] = React.useState(true)
+
+    const [userData, setUserData] = React.useState()
+    const [partnerData, setPartnerData] = React.useState()
+    const [modoClient, setModoClient] = React.useState(false)
+    const [modoPartner, setModoPartner] = React.useState(false)
+
+    const [partnerCompanyId, setPartnerCompanyId] = React.useState()
+    const [partnerCompanyAddress, setPartnerCompanyAddress] = React.useState()
+    const [partnerCompanyCity, setPartnerCompanyCity] = React.useState()
+    const [partnerCompanyCodePostal, setPartnerCompanyCodePostal] = React.useState()
+    const [partnerCompanyPhone, setPartnerCompanyPhone] = React.useState()
+
+    const [partnerServices, setPartnerServices] = React.useState()
+
+
+    const [responseForm, setResponseForm] = React.useState()
+
+    React.useEffect(() => {
+        const fetchUserAndPartnerData = async () => {
+            const userToken = cookieCutter.get('SESSID')
+
+            const getUserData = await getMe(userToken)
+
+            if (getUserData.statusCode === 401) {
+                window.location.href = '/connexion';
+                console.log("Erreur")
+                return
+            }
+
+            if (getUserData && getUserData['modo_client_company']) setModoClient(true)
+            if (getUserData && getUserData['modo_partner_company']) setModoPartner(true)
+            if (getUserData && getUserData['partner_company']['id']) setPartnerCompanyId(getUserData['partner_company']['id'])
+            setUserData(getUserData)
+
+            if (getUserData['partner_company']['id'] !== undefined) {
+                const services = await getServices(getUserData['partner_company']['id'], userToken)
+                setPartnerServices(services)
+            }
+
+            setPartnerData(getUserData['partner_company'])
+        }
+
+        fetchUserAndPartnerData()
+    }, [])
+
+    const handleModifyPartnerSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+
+        const userToken = cookieCutter.get('SESSID')
+
+        const partnerDataForModify = {
+            id: partnerCompanyId,
+            num_phone: partnerCompanyPhone,
+            address: partnerCompanyAddress,
+            city: partnerCompanyCity,
+            code_postal: partnerCompanyCodePostal
+        }
+        const response = await updatePartner(partnerDataForModify, userToken)
+
+        setResponseForm(response)
+    }
 
     const handleBackClick = () => {
         setShowReservations(false)
@@ -40,28 +105,33 @@ export default function ProfilEntrepriseContent() {
 
     if (showServices) {
         return (
-            <div className="profilContentInfos">
+            <div className="profilContentServices">
                 <h1>Vos Services</h1>
                 <div className='infos'>
-                    <form action="" className="formInfos">
-                        <p>E-mail professionel</p>
-                        <Input
-                            placeHolder='test'
-                            className='inputForm'
-                            disabled={true} />
-                        <p>E-mail personnel</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Temps Moyen</th>
+                            </tr>
+                        </thead>
+                        {
+                            partnerServices ?
+                                partnerServices.map((partnerService) => (
+                                    <tbody>
 
-                        <Input
-                            placeHolder='test'
-                            className='inputForm'
-                        />
-                        <p>Numéro de téléphone</p>
-
-                        <Input
-                            placeHolder='test'
-                            className='inputForm'
-                        />
-                    </form>
+                                        <tr>
+                                            <td key={1} data-label="Categorie">{partnerService.name}</td>
+                                            <td key={2} data-label="Nom">{partnerService.name}</td>
+                                            <td key={3} data-label="Prix">{partnerService.price} €</td>
+                                            <td key={4} data-label="Temps moyen">{partnerService.average_time}</td>
+                                        </tr>
+                                    </tbody>
+                                )) : ''
+                        }
+                    </table>
                 </div>
                 <Button
                     text='Retour'
@@ -76,25 +146,46 @@ export default function ProfilEntrepriseContent() {
     if (showInfos) {
         return (
             <div className="profilContentInfos">
-                <h1>Vos Informations</h1>
+                <h1>Informations Entreprise</h1>
                 <div className='infos'>
-                    <form action="" className="formInfos">
-                        <p>E-mail professionel</p>
+                    <form action="" className="formInfos" onSubmit={handleModifyPartnerSubmit}>
+                        <p>Nom d'entreprise</p>
                         <Input
-                            placeHolder='test'
+                            placeHolder={partnerData ? `${partnerData.name}` : ''}
                             className='inputForm'
                             disabled={true} />
-                        <p>E-mail personnel</p>
-
-                        <Input
-                            placeHolder='test'
-                            className='inputForm'
-                        />
                         <p>Numéro de téléphone</p>
-
                         <Input
-                            placeHolder='test'
+                            placeHolder={partnerData ? `${partnerData.num_phone}` : ''}
                             className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setPartnerCompanyPhone(e.target.value)}
+                        />
+                        <p>Adresse</p>
+                        <Input
+                            placeHolder={partnerData ? `${partnerData.address}` : ''}
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setPartnerCompanyAddress(e.target.value)}
+                        />
+                        <p>Ville</p>
+                        <Input
+                            placeHolder={partnerData ? `${partnerData.city}` : ''}
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setPartnerCompanyCity(e.target.value)}
+                        />
+                        <p>Code Postal</p>
+                        <Input
+                            placeHolder={partnerData ? `${partnerData.code_postal}` : ''}
+                            className='inputForm'
+                            onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setPartnerCompanyCodePostal(e.target.value)}
+                        />
+                        <Button
+                            text='Modifier'
+                            className='back submit'
+                            type='submit'
                         />
                     </form>
                 </div>
@@ -127,7 +218,7 @@ export default function ProfilEntrepriseContent() {
                         }}
                     />
                     <Button
-                        text='Vos informations'
+                        text='Informations Entreprise'
                         className=''
                         onClick={() => {
                             setShowInfos(true);

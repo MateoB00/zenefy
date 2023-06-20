@@ -1,22 +1,28 @@
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 import '../../../public/scss/pages/service/third_bloc/third_bloc.scss';
 import '../../../public/scss/pages/service/third_bloc/third_bloc_responsive.scss';
 
 import MapPage from '../../../components/api/map'
 import OpenHours from './open_hours'
 
-export default function ThirdBlocService() {
-    // const centerMap = await (await getCenterMap()).centerMap
+import { fetchCompanyData } from '../../../api/google'
+
+export default function ThirdBlocService({ googleCompanyInfos }) {
+    const [googleCompanyData, setGoogleCompanyData] = React.useState(googleCompanyInfos)
 
     return (
         <section className="thirdBloc">
             <div className='localisation'>
                 <h2>Nous localiser</h2>
 
-                <div className='bloc_infos'>
-                    <MapPage />
-                    <OpenHours />
-                </div>
+                {
+                    googleCompanyData ?
+                        <div className='bloc_infos'>
+                            <MapPage centerMap={googleCompanyData ? googleCompanyData['centerMap'] : null} />
+                            <OpenHours companyInfos={googleCompanyData ? googleCompanyData['companyInfos'] : null} />
+                        </div>
+                        : null
+                }
             </div>
         </section>
     );

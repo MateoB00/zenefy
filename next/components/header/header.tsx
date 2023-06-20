@@ -1,44 +1,57 @@
 import * as React from 'react';
+import cookieCutter from 'cookie-cutter';
 
 import '../../public/scss/components/header/header.scss';
 import '../../public/scss/components/header/header_responsive.scss';
 
 import LinkAccueil from '../links/link';
+import { authLogout, getMe } from '../../api/user'
 
-export default function Header(
-    props: {
 
+export default function Header() {
+    const [userData, setUserData] = React.useState()
+    const [modoClient, setModoClient] = React.useState(false)
+    const [modoPartner, setModoPartner] = React.useState(false)
+
+    const [showBurgerMenu, setShowBurgerMenu] = React.useState(false)
+    const [showZenefyBurgerMenu, setZenefyShowBurgerMenu] = React.useState(false)
+
+    React.useEffect(() => {
+        const fetchUserData = async () => {
+            const userToken = cookieCutter.get('SESSID')
+            const getUserData = await getMe(userToken)
+
+            if (getUserData.statusCode === 401) {
+                console.log("Erreur")
+                return
+            }
+
+            setUserData(getUserData)
+            if (getUserData && getUserData['modo_client_company']) setModoClient(true)
+            if (getUserData && getUserData['modo_partner_company']) setModoPartner(true)
+        }
+
+        fetchUserData()
+    }, [])
+
+
+
+    const handleLogoutSubmit = async () => {
+        await authLogout()
+        window.location.href = '/connexion';
     }
-) {
 
-    // Pour la bulle si elle met du temps à charger regarder la doc  https://nextjs.org/docs/pages/api-reference/components/image
-    // const imageLoader = ({ src, width, quality }) => {
-    //     return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
-    //   };
 
     const handleMenuButtonClick = () => {
         const menuButton = document.getElementById("menuButton");
         const menuButtonMobile = document.getElementById("menuButtonMobile");
-        const popUpMenu = document.querySelector('.popUpMenu');
-        const popUpZenefy = document.querySelector('.popUpZenefy')
-        if (menuButton && menuButtonMobile && popUpMenu) {
-            menuButton.classList.toggle('is-active');
-            menuButtonMobile.classList.toggle('is-active');
-            popUpMenu.classList.toggle('popUpMenuBlock');
-            //Pour que le second menu qui s'affiche disparait si on appuie sur la croix du menu burger
-            if (!popUpMenu.classList.contains('popUpMenuBlock') && popUpZenefy) {
-
-                popUpZenefy.classList.remove('popUpZenefyBlock')
-            }
-        }
+        if (menuButton) menuButton.classList.toggle('is-active');
+        if (menuButtonMobile) menuButtonMobile.classList.toggle('is-active');
+        showBurgerMenu === true ? setShowBurgerMenu(false) : setShowBurgerMenu(true)
     }
 
     const handleZenefyMenuButtonClick = () => {
-        const zenefyMenuButton = document.getElementById("zenefyMenuButton")
-        const popUpZenefy = document.querySelector('.popUpZenefy')
-        if (zenefyMenuButton && popUpZenefy) {
-            popUpZenefy.classList.toggle('popUpZenefyBlock')
-        }
+        showZenefyBurgerMenu === true ? setZenefyShowBurgerMenu(false) : setZenefyShowBurgerMenu(true)
     }
 
     return (
@@ -68,15 +81,16 @@ export default function Header(
                         <i className="fa-solid fa-magnifying-glass fa-lg"></i>
                     </LinkAccueil>
                 </div>
-                <div className="right_side">
+                <div className="right_side"
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                        e.preventDefault();
+                        handleMenuButtonClick();
+                    }}
+                >
                     <LinkAccueil
                         href='#'
                         className='menu-button'
                         id='menuButton'
-                        onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-                            e.preventDefault();
-                            handleMenuButtonClick();
-                        }}
                     >
                         <span className="burger-icon"></span>
                     </LinkAccueil>
@@ -96,12 +110,13 @@ export default function Header(
                             href='#'
                             className='menu-button-mobile'
                             id='menuButtonMobile'
-                            onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-                                e.preventDefault();
-                                handleMenuButtonClick();
-                            }}
+
                         >
-                            <span className="burger-icon"></span>
+                            <span className="burger-icon"
+                                onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                                    e.preventDefault();
+                                    handleMenuButtonClick();
+                                }}></span>
                         </LinkAccueil>
                     </div>
                 </div>
@@ -125,96 +140,130 @@ export default function Header(
                 </div>
             </div>
 
+            {
+                showBurgerMenu ?
+                    <div className="popUpMenuBlock">
+                        {
+                            userData ? (
+                                <><p className="item_1">
+                                    <LinkAccueil
+                                        href='#'
+                                        text='Déconnexion'
+                                        className=''
+                                        id=''
+                                        onClick={() => {
+                                            handleLogoutSubmit();
+                                        }}
+                                    >
+                                    </LinkAccueil>
+                                </p><p className="item_2">
+                                        <LinkAccueil
+                                            href='/profil'
+                                            text='Mon Profil'
+                                            className=''
+                                            id=''
+                                        >
+                                        </LinkAccueil>
+                                    </p></>
+                            ) : (
+                                <><p className="item_1">
+                                    <LinkAccueil
+                                        href='#'
+                                        text='Inscription'
+                                        className=''
+                                        id=''
+                                    >
+                                    </LinkAccueil>
+                                </p><p className="item_2">
+                                        <LinkAccueil
+                                            href='/connexion'
+                                            text='Connexion'
+                                            className=''
+                                            id=''
+                                        >
+                                        </LinkAccueil>
+                                    </p></>
+                            )
+                        }
+                        <p className="item_3">
+                            <LinkAccueil
+                                href='#'
+                                text='Zenefy'
+                                className=''
+                                id='zenefyMenuButton'
+                                onMouseOver={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                                    e.preventDefault();
+                                    handleZenefyMenuButtonClick();
+                                }}
+                            >
+                            </LinkAccueil>
+                        </p>
+                        <p className="item_4">
+                            <LinkAccueil
+                                href='#'
+                                text='Apparence'
+                                className=''
+                                id=''
+                            >
+                            </LinkAccueil>
+                        </p>
+                        <p className="item_5">
+                            <LinkAccueil
+                                href='#'
+                                text='Contact'
+                                className=''
+                                id=''
+                            >
+                            </LinkAccueil>
+                        </p>
+                        {
+                            showZenefyBurgerMenu ? <div className="popUpZenefyBlock">
+                                {
+                                    modoPartner === true ? <p className="item_1_zenefy">
+                                        <LinkAccueil
+                                            href='/profil/partenaire'
+                                            text='Partenaire'
+                                            className=''
+                                            id=''
+                                        >
+                                        </LinkAccueil>
+                                    </p> : ''
+                                }
 
-            <div className="popUpMenu">
-                <p className="item_1">
-                    <LinkAccueil
-                        href='#'
-                        text='Inscription'
-                        className=''
-                        id=''
-                    >
-                    </LinkAccueil>
-                </p>
-                <p className="item_2">
-                    <LinkAccueil
-                        href='/connexion'
-                        text='Connexion'
-                        className=''
-                        id=''
-                    >
-                    </LinkAccueil>
-                </p>
-                <p className="item_3">
-                    <LinkAccueil
-                        href='#'
-                        text='Zenefy'
-                        className=''
-                        id='zenefyMenuButton'
-                        onMouseOver={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-                            e.preventDefault();
-                            handleZenefyMenuButtonClick();
-                        }}
-                    >
-                    </LinkAccueil>
-                </p>
-                <p className="item_4">
-                    <LinkAccueil
-                        href='#'
-                        text='Apparence'
-                        className=''
-                        id=''
-                    >
-                    </LinkAccueil>
-                </p>
-                <p className="item_5">
-                    <LinkAccueil
-                        href='#'
-                        text='Contact'
-                        className=''
-                        id=''
-                    >
-                    </LinkAccueil>
-                </p>
-                <div className="popUpZenefy">
-                    <p className="item_1_zenefy">
-                        <LinkAccueil
-                            href='#'
-                            text='Partenaire'
-                            className=''
-                            id=''
-                        >
-                        </LinkAccueil>
-                    </p>
-                    <p className="item_2_zenefy">
-                        <LinkAccueil
-                            href='#'
-                            text='Client'
-                            className=''
-                            id=''
-                        >
-                        </LinkAccueil>
-                    </p>
-                    <p className="item_3_zenefy">
-                        <LinkAccueil
-                            href='/zenefy_pro'
-                            text='Zenefy PRO'
-                            className=''
-                            id=''
-                        >
-                        </LinkAccueil>
-                    </p>
-                    <p className="item_4_zenefy">
-                        <LinkAccueil
-                            href='#'
-                            text='A propos'
-                            className=''
-                            id=''
-                        >
-                        </LinkAccueil>
-                    </p>
-                </div>
-            </div>
-        </div>
+                                {
+                                    modoClient === true ? <p className="item_2_zenefy">
+                                        <LinkAccueil
+                                            href='/profil/entreprise'
+                                            text='Entreprise'
+                                            className=''
+                                            id=''
+                                        >
+                                        </LinkAccueil>
+                                    </p> : ''
+                                }
+
+                                <p className="item_3_zenefy">
+                                    <LinkAccueil
+                                        href='/zenefy_pro'
+                                        text='Zenefy PRO'
+                                        className=''
+                                        id=''
+                                    >
+                                    </LinkAccueil>
+                                </p>
+                                <p className="item_4_zenefy">
+                                    <LinkAccueil
+                                        href='#'
+                                        text='A propos'
+                                        className=''
+                                        id=''
+                                    >
+                                    </LinkAccueil>
+                                </p>
+                            </div> : ''
+                        }
+                    </div> : ''
+            }
+        </div >
     )
 }

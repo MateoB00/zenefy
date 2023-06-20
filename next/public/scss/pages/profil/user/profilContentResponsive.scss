@@ -1,6 +1,13 @@
 @import '../../../root';
 
 .profilContentButtons {
+    @media (max-height: 735px) {
+        height: 80vh !important;
+    }
+
+    @media (max-height: 600px) {
+        height: 90vh !important;
+    }
 
     h1 {}
 
@@ -34,11 +41,11 @@
 
 .infos {
     @media (max-width: 1300px) {
-        width: 60% !important;
+        width: 80% !important;
     }
 
     @media (max-width: 800px) {
-        width: 70% !important;
+        width: 90% !important;
     }
 
     .formInfos {
@@ -71,5 +78,16 @@
 
     @media (max-width: 420px) {
         width: 35% !important;
+    }
+}
+
+.submit {
+
+    @media (max-width: 750px) {
+        width: 60% !important;
+    }
+
+    @media (max-width: 420px) {
+        width: 65% !important;
     }
 }

@@ -2,31 +2,20 @@ import React from 'react';
 
 import '../../../public/scss/components/api/open_hours.scss';
 
-interface MapPageProps {
-    centerMapData: {
-        lat: any;
-        lng: any;
-    },
-}
 
-interface InfosCompany {
-    open_now: boolean;
-    open_periods: [];
-    rating: number
-}
-
-
-export default function OpenHours() {
+export default function OpenHours({ companyInfos }) {
+    const [googleCompanyInfos, setGoogleCompanyInfos] = React.useState(companyInfos)
 
     return (
         <div className="opening_hours">
             <h3>Horaires d'ouverture</h3>
-            {/* <p>Actuellement : {(infosCompany.open_now === true) ? ' Ouvert' : ' Fermé'}</p> */}
-            {/* <ol>
-                {infosCompany.open_periods.map((hour, index) => (
+            <p>Actuellement : {(googleCompanyInfos.open_now === true) ? ' Ouvert' : ' Fermé'}</p>
+            {<ol>
+                {googleCompanyInfos.open_periods && googleCompanyInfos.open_periods.map((hour, index) => (
                     <li key={index}>{hour}</li>
                 ))}
-            </ol> */}
+            </ol>
+            }
         </div>
     );
 }

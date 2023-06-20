@@ -6,13 +6,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 0px 50px 0px;
+    justify-content: center;
+    height: 70vh;
 
 
     h1 {
         font-size: 2em;
         font-weight: bold;
         margin-bottom: 20px;
+    }
+
+    .buttons {
+        text-align: center;
+        width: 50%;
+
+        button {
+            border-radius: 10px;
+            background-color: $primary_color;
+            color: #fff;
+            margin: 20px 0px 20px 0px;
+            height: fit-content;
+            padding: 10px 0px 10px 0px;
+        }
+    }
+}
+
+.profilContentServices {
+    background-color: #fff;
+    color: $primary_color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px 50px 0px;
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        font-weight: bold;
     }
 
     .credit {
@@ -24,19 +54,19 @@
         }
     }
 
-    .buttons {
-        text-align: center;
-        width: 50%;
-
-        button {
-            background-color: $primary_color;
-            color: #fff;
-            margin: 20px 0px 20px 0px;
-            height: fit-content;
-            padding: 10px 0px 10px 0px;
-        }
+    .infos {
+        display: flex;
+        background-color: $primary_color;
+        width: 80%;
+        justify-content: center;
+        border-radius: 10px;
+        height: fit-content;
+        padding: 30px 0px 30px 0px;
+        color: white;
+        overflow-x: auto;
     }
 }
+
 
 .profilContentInfos {
     background-color: #fff;
@@ -48,6 +78,7 @@
 
     h1 {
         font-size: 2em;
+        margin-bottom: 20px;
         font-weight: bold;
     }
 
@@ -72,7 +103,7 @@
         .formInfos {
             display: flex;
             flex-direction: column;
-            // align-items: center;
+            align-items: center;
             padding: 20px 0px 20px 0px;
             gap: 20px;
             color: #fff;
@@ -94,10 +125,23 @@
     }
 }
 
+
 .back {
     width: 20%;
     background-color: $primary_color;
     color: #fff;
     border-radius: 10px;
     margin-top: 50px;
+}
+
+.submit {
+    width: 50%;
+}
+
+.messageFlash {
+    text-align: center;
+    color: green;
+    // padding: 5px 0px 5px 0px;
+    // border: 1px solid $primary_color;
+    background-color: $primary_color;
 }

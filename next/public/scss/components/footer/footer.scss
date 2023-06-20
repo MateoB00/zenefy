@@ -7,6 +7,7 @@
     .footer_normal {
         display: flex;
         justify-content: space-between;
+        text-align: center;
         width: 75%;
         margin: auto;
         color: $primary_color;
@@ -25,12 +26,12 @@
 
         .footer_mobile {
             display: block !important;
-            margin: 0 auto !important;
+            gap: 20px;
         }
 
         .list_footer {
+            padding: 0px 0px 15px 0px !important;
             text-align: center;
-            padding: 0;
         }
 
     }
