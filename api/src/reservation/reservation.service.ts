@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Reservation } from './reservation.entity';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class ReservationService {
@@ -61,11 +62,17 @@ export class ReservationService {
 
     //Relations 
 
-    findByUser(user_id: number) {
-        const fetchByUserId = this.reservationRepository.find(
+    findByUser(user: User) {
+        const fetchByUserId = this.reservationRepository.find({
+            relations: {
+                partner_company: true,
+                service: true
+            },
             // exemple de condition dans le findMany
-            { where: { user: { id: user_id } } }
-        )
+            where: {
+                user: { id: user.id }
+            }
+        })
 
         return fetchByUserId;
     }

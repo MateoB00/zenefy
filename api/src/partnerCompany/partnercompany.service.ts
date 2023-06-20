@@ -29,8 +29,8 @@ export class PartnerCompanyService {
         })
 
         if (!fetchPartnerById) {
-            console.log('Entreprise cliente non trouvé');
-            throw new Error('Entreprise cliente  non trouvé.');
+            console.log('Entreprise partenaire non trouvé');
+            throw new Error('Entreprise partenaire  non trouvé.');
         }
 
         return fetchPartnerById;
@@ -45,21 +45,26 @@ export class PartnerCompanyService {
         return fetchAll;
     }
 
-    async update(id: number, user: User, partnerCompany: PartnerCompany) {
-
-        console.log(user)
-        if (user.modo_partner_company === false) {
+    async update(user, partnerCompany: PartnerCompany) {
+        if (user['modo_partner_company'] === false) {
             throw new UnauthorizedException()
         }
 
         const existingPartnerCompany = await this.partnerCompanyRepository.findOne({
-            where: { id: id }
+            where: { id: partnerCompany.id }
         })
 
-        console.log(existingPartnerCompany)
-        Object.assign(existingPartnerCompany, partnerCompany)
+        const dataUpdatedPartnerCompany = {};
+        for (const key in partnerCompany) {
+            if (partnerCompany[key] !== null && partnerCompany[key] !== undefined) {
+                dataUpdatedPartnerCompany[key] = partnerCompany[key];
+            }
+        }
 
-        const updatePartnerCompany = await this.partnerCompanyRepository.save(existingPartnerCompany)
+        const updatePartnerCompany = await this.partnerCompanyRepository.save({
+            id: existingPartnerCompany.id,
+            ...dataUpdatedPartnerCompany
+        })
 
         return updatePartnerCompany
     }

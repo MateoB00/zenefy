@@ -11,6 +11,7 @@ import { ServiceModule } from './service/service.module';
 import { CategoryServiceModule } from './categoryService/categoryservice.module';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { AuthModule } from './auth/auth.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { AuthModule } from './auth/auth.module';
     ServiceModule,
     CategoryServiceModule,
     SubscriptionModule,
-    AuthModule
+    AuthModule,
+    ApiModule
   ],
   controllers: [],
   providers: [],

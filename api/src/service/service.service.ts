@@ -25,6 +25,9 @@ export class ServiceService {
 
     async findOneById(id: number) {
         const fetchServiceById = await this.serviceRepository.findOne({
+            relations: {
+                partner_company: true,
+            },
             where: { id: id }
         })
 
@@ -36,14 +39,23 @@ export class ServiceService {
         return fetchServiceById;
     }
 
-    // findByPartner(partner: number) {
-    //     const fetchByServiceId = this.serviceRepository.find(
-    //         // exemple de condition dans le findMany
-    //         { where: { partner_company: partner } }
-    //     )
+    findByPartner(partnerCompanyId: number) {
+        const fetchByServiceId = this.serviceRepository.find({
+            relations: {
+                partner_company: true,
+                category_service: true
+            },
+            where: {
+                partner_company: {
+                    id: partnerCompanyId
+                }
+            }
+        }
+            // exemple de condition dans le findMany
+        )
 
-    //     return fetchByServiceId;
-    // }
+        return fetchByServiceId;
+    }
 
     findMany() {
         const fetchAll = this.serviceRepository.find(

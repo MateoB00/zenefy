@@ -3,19 +3,21 @@ import {
     Controller,
     Get,
     Param,
-    Patch,
     Post,
-    Put
+    Put,
+    UseGuards
 } from '@nestjs/common';
-
+import { AuthGuard } from '@nestjs/passport';
 import { PartnerCompany } from "./partnercompany.entity";
 import { PartnerCompanyService } from "./partnercompany.service";
+import { ServiceService } from "../service/service.service";
 
 @Controller('partner_company')
 export class PartnerCompanyController {
-    constructor(private partnerCompanyService: PartnerCompanyService) { }
+    constructor(private partnerCompanyService: PartnerCompanyService, private serviceService: ServiceService) { }
 
     @Post()
+    @UseGuards(AuthGuard('jwt'))
     create(@Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
         return this.partnerCompanyService.create(partnerCompany)
     }
@@ -31,8 +33,10 @@ export class PartnerCompanyController {
         return this.partnerCompanyService.findMany()
     }
 
-    // @Put(':id')
-    // update(@Param('id') id: number, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
-    //     return this.partnerCompanyService.update(id, partnerCompany)
-    // }
+    //Relations
+    @Get(':id/services')
+    @UseGuards(AuthGuard('jwt'))
+    findOurServices(@Param('id') partnerCompanyId: number) {
+        return this.serviceService.findByPartner(partnerCompanyId)
+    }
 }

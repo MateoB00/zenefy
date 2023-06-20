@@ -84,11 +84,26 @@ export class UserService {
             where: { id: id }
         })
 
-        Object.assign(existingUser, user)
+        const dataUpdatedUser = {};
+        for (const key in user) {
+            if (user[key] !== null && user[key] !== undefined) {
+                dataUpdatedUser[key] = user[key];
+            }
+        }
 
-        const updateUser = await this.userRepository.save(existingUser)
+        let hashedPassword = existingUser.password;
+        if (user.password) {
+            hashedPassword = await bcrypt.hash(user.password, 10);
+            dataUpdatedUser["password"] = hashedPassword;
+        }
 
-        return updateUser
+
+        const updatedUser = await this.userRepository.save({
+            id: existingUser.id,
+            ...dataUpdatedUser
+        })
+
+        return updatedUser
     }
 
     async delete(id: number): Promise<void> {

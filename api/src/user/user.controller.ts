@@ -30,7 +30,6 @@ export class UserController {
         return this.userService.create(user)
     }
 
-    // id dans l'url
     @Get('me')
     @UseGuards(AuthGuard('jwt'))
     async findById(@Request() req: any) {
@@ -58,16 +57,17 @@ export class UserController {
     }
 
     //Relations
-    @Get(':user_id/reservations')
+    @Get('reservations')
     @UseGuards(AuthGuard('jwt'))
-    findAllReservations(@Param('user_id') user_id: number) {
-        return this.reservationService.findByUser(user_id)
+    findAllReservations(@Request() req: any) {
+        const loggedInUser = req.user
+        return this.reservationService.findByUser(loggedInUser)
     }
 
-    @Put(':partner_company_id/partner')
+    @Put('partner/update')
     @UseGuards(AuthGuard('jwt'))
-    updatePartnerCompany(@Param('partner_company_id') id: number, @Request() req: any, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
+    updatePartnerCompany(@Request() req: any, @Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
         const loggedInUser = req.user
-        return this.partnerCompanyService.update(id, loggedInUser, partnerCompany)
+        return this.partnerCompanyService.update(loggedInUser, partnerCompany)
     }
 }

@@ -17,6 +17,12 @@ export class PartnerCompany {
     @Column('text')
     address: string;
 
+    @Column('text')
+    city: string;
+
+    @Column('text')
+    code_postal: string;
+
     @Column({
         length: 35
     })
@@ -26,6 +32,11 @@ export class PartnerCompany {
         length: 35
     })
     iban: string;
+
+    @Column('double precision', {
+        default: 0
+    })
+    credit_zen: number;
 
     @Column({
         type: 'datetime',
@@ -50,5 +61,4 @@ export class PartnerCompany {
 
     @OneToMany(type => Reservation, reservation => reservation.partner_company)
     reservations: Reservation[];
-    modo_partner_company: number;
 }
