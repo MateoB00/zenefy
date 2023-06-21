@@ -3,6 +3,8 @@
 import * as React from 'react';
 import cookieCutter from 'cookie-cutter';
 
+import { NextResponse } from 'next/server';
+
 import '../../public/scss/components/header/header.scss';
 import '../../public/scss/components/header/header_responsive.scss';
 
@@ -42,8 +44,8 @@ export default function Header() {
 
 
 
-    const handleLogoutSubmit = async () => {
-        await authLogout()
+    const handleLogoutSubmit = async (res: NextResponse) => {
+        await authLogout(res)
         window.location.href = '/connexion';
     }
 
@@ -190,7 +192,7 @@ export default function Header() {
                             ) : (
                                 <><p className="item_1">
                                     <LinkAccueil
-                                        href='#'
+                                        href='/inscription'
                                         text='Inscription'
                                         className=''
                                         id=''

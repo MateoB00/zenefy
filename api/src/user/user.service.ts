@@ -18,6 +18,11 @@ export class UserService {
             throw new Error('Utilisateur déjà existant');
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(user.email)) {
+            throw new Error("L'e-mail doit être au format valide.");
+        }
+
         const hashedPassword = await bcrypt.hash(user.password, 10);
 
         const newUser = {

@@ -102,3 +102,27 @@ export const fetchReservations = async (token: string) => {
         console.log(err);
     }
 }
+
+
+export const authRegister = async (user: Object) => {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}auth/register`,
+            {
+                method: 'POST',
+                body: JSON.stringify(
+                    user
+                ),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+        if (response.status === 201) {
+            await authLogin(user.email, user.password)
+        }
+        return response.status
+    } catch (err) {
+        console.log(err);
+    }
+}

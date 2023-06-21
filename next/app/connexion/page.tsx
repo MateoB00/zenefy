@@ -26,7 +26,7 @@ export default function Page() {
     return (
         <div className="connexion">
             <div className="box m-auto">
-                <h1 className='text-center'>ZENEFY</h1>
+                <a href="/"><h1 className='text-center'>ZENEFY</h1></a>
                 <form onSubmit={handleSubmit} className="form">
                     <InputConnexion
                         className="test"

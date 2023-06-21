@@ -35,7 +35,7 @@ export default function ProfilUserContent() {
     const fetchUserData = async () => {
       const userToken = cookieCutter.get("SESSID");
 
-      if (userToken) {
+      if (userToken !== null) {
         const getUserData = await getMe(userToken);
         const getUserReservations = await fetchReservations(userToken);
 
@@ -162,9 +162,11 @@ export default function ProfilUserContent() {
               ? reservations.map((reservation: any, index: number) => (
                 <tbody key={reservation.id}>
                   <tr>
-                    <td data-label="Salon">{`${reservation[
+                    <td data-label="Salon">{reservation[
                       "partner_company"
-                    ].name.slice(0, 15)}`}</td>
+                    ] ? `${reservation[
+                      "partner_company"
+                    ].name.slice(0, 15)}` : ''}</td>
                     <td data-label="Date">
                       {format(
                         new Date(reservation.started_at),
@@ -173,7 +175,7 @@ export default function ProfilUserContent() {
                       )}
                     </td>
                     <td data-label="Prix">
-                      {reservation["service"].price} €
+                      {reservation["service"].price ? reservation["service"].price : ''} €
                     </td>
                     <td data-label="Status">
                       {reservation["accepted"] && reservation["done"] === true

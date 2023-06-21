@@ -55,7 +55,7 @@ export default function BlocPrestations({ serviceData }) {
       title: 'Réservation Zenefy'
     };
 
-    if (userToken) {
+    if (userToken !== null) {
       await createReservation(userToken, reservationsInfos);
     }
   };

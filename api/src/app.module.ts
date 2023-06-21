@@ -15,7 +15,9 @@ import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     TypeOrmModule.forRoot(typeormConnectionConfig),
     UserModule,
     ContactModule,

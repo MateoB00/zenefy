@@ -54,7 +54,7 @@ export default function ProfilEntrepriseContent() {
     const fetchUserAndPartnerData = async () => {
       const userToken = cookieCutter.get("SESSID");
 
-      if (userToken) {
+      if (userToken !== null) {
 
 
         const getUserData = await getMe(userToken);
@@ -101,7 +101,7 @@ export default function ProfilEntrepriseContent() {
       city: partnerCompanyCity,
       code_postal: partnerCompanyCodePostal,
     };
-    if (userToken) {
+    if (userToken !== null) {
       const response = await updatePartner(partnerDataForModify, userToken);
 
       if (response) {
@@ -124,7 +124,7 @@ export default function ProfilEntrepriseContent() {
       code_postal: partnerCompanyCodePostal,
       category_service: null,
     };
-    if (userToken) {
+    if (userToken !== null) {
       const response = await createService(userToken, serviceData);
 
       if (response) {
