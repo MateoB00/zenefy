@@ -1,4 +1,4 @@
-export const getService = async (id) => {
+export const getService = async (id: number) => {
     try {
         const response = await fetch(
             `http://localhost:3001/service/${id}`,

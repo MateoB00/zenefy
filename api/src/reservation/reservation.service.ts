@@ -3,12 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Reservation } from './reservation.entity';
 import { User } from 'src/user/user.entity';
+import {UserService} from '../user/user.service'
+import { PartnerCompanyService } from 'src/partnerCompany/partnercompany.service';
 
 @Injectable()
 export class ReservationService {
-    constructor(@InjectRepository(Reservation) private reservationRepository: Repository<Reservation>) { }
+    constructor(@InjectRepository(Reservation) private reservationRepository: Repository<Reservation>, private userService: UserService, private partnerCompanyService: PartnerCompanyService) { }
 
-    async create(reservation: Reservation, user: User) {
+    async create(reservation, user: User) {
         const newReservation = {
             done: reservation.done,
             accepted: reservation.accepted,
@@ -20,10 +22,31 @@ export class ReservationService {
             title: reservation.title,
         }
 
-        const createdReservation = await this.reservationRepository.save(
-            newReservation
-        )
-        return createdReservation;
+        if (user.modo_partner_company) {
+            const createdReservation = await this.reservationRepository.save(
+                newReservation
+            )
+
+            return createdReservation
+        } 
+        if (user.credit_zen >= reservation.priceOfService) {
+            user.credit_zen = user.credit_zen - reservation.priceOfService
+            reservation['partner_company'].credit_zen = reservation['partner_company'].credit_zen + reservation.priceOfService 
+
+            console.log(user)
+            const updateUser = await this.userService.update(user.id, user)
+
+            user.modo_partner_company = true
+            const updatePartnerCompany = await this.partnerCompanyService.update(user, reservation['partner_company'])
+
+            const createdReservation = await this.reservationRepository.save(
+                newReservation
+            )
+
+            return [updateUser, updatePartnerCompany, createdReservation]
+        }
+        
+        new Error('cannot create reservation');
     }
 
     async findOneById(id: number) {

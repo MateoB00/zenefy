@@ -11,6 +11,7 @@ import { PartnerCompanyService } from '../partnerCompany/partnercompany.service'
 @Module({
     imports: [TypeOrmModule.forFeature([User, Reservation, PartnerCompany])],
     controllers: [UserController],
-    providers: [UserService, ReservationService, PartnerCompanyService]
+    providers: [UserService, ReservationService, PartnerCompanyService],
+    exports: [UserService]
 })
 export class UserModule { }

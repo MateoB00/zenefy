@@ -1,4 +1,4 @@
-export const getPartner = async (id) => {
+export const getPartner = async (id: number) => {
     try {
         const response = await fetch(
             `http://localhost:3001/partner_company/${id}`,

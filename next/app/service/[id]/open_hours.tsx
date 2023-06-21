@@ -8,7 +8,7 @@ export default function OpenHours({ companyInfos }) {
 
     return (
         <div className="opening_hours">
-            <h3>Horaires d'ouverture</h3>
+            <h3>Horaires d&apos;ouverture</h3>
 
             {
                 googleCompanyInfos && googleCompanyInfos.open_now ?

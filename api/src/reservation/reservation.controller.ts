@@ -19,7 +19,7 @@ export class ReservationController {
 
     @Post()
     @UseGuards(AuthGuard('jwt'))
-    create(@Request() req: any, @Body() reservation: Reservation): Promise<Reservation> {
+    create(@Request() req: any, @Body() reservation: Reservation): Promise<any>{
         const loggedInUser = req.user
         return this.reservationService.create(reservation, loggedInUser)
     }

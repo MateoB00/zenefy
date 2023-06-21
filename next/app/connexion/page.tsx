@@ -9,6 +9,7 @@ import InputConnexion from '../../components/inputs/input';
 import ButtonConnexion from '../../components/buttons/button';
 
 import { authLogin } from '../../api/user'
+import { NextRequest } from 'next/server';
 
 
 export default function Page(req, res) {
