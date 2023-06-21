@@ -49,6 +49,7 @@ export default function ProfilEntrepriseContent() {
   const [descriptionService, setDescriptionService] = React.useState('');
   const [averageTimeService, setAverageTimeService] = React.useState('');
   const [categoryService, setCategoryService] = React.useState('');
+  const [categoryServiceId, setCategoryServiceId] = React.useState<number | undefined>(undefined);
 
   React.useEffect(() => {
     const fetchUserAndPartnerData = async () => {
@@ -116,13 +117,22 @@ export default function ProfilEntrepriseContent() {
     event.preventDefault();
 
     const userToken = cookieCutter.get("SESSID");
+
+    let categoryServiceId = null
+    if (categoryService == 'Coiffure') categoryServiceId = 1
+    if (categoryService == 'Spa') categoryServiceId = 2
+    if (categoryService == 'Manucure') categoryServiceId = 3
+    if (categoryService == 'Massage') categoryServiceId = 4
+    if (categoryService == 'Yoga') categoryServiceId = 5
+    if (categoryService == 'Musculation') categoryServiceId = 6
+
     const serviceData = {
       name: nameService,
       price: parseInt(priceService),
       average_time: averageTimeService,
       partner_company: partnerCompanyId,
       code_postal: partnerCompanyCodePostal,
-      category_service: null,
+      category_service: categoryServiceId,
     };
     if (userToken !== null) {
       const response = await createService(userToken, serviceData);
@@ -178,7 +188,7 @@ export default function ProfilEntrepriseContent() {
               ? partnerServices.map((partnerService: any) => (
                 <tbody key={partnerService.id}>
                   <tr>
-                    <td data-label="Categorie">{partnerService['category_service'].name ? partnerService['category_service'].name : ''}</td>
+                    <td data-label="Categorie">{partnerService['category_service'] ? partnerService['category_service'].name : ''}</td>
                     <td data-label="Nom">{partnerService.name}</td>
                     <td data-label="Prix">{partnerService.price} €</td>
                     <td data-label="Temps moyen">
