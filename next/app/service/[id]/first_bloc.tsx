@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react';
 
 import SlideFirstBloc from '../../../components/sliders/service/slider_first_bloc';

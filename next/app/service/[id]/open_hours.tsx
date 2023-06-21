@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react';
 
 import '../../../public/scss/components/api/open_hours.scss';

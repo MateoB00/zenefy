@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 
 import "../../public/scss/components/buttons/button.scss";

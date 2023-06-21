@@ -15,6 +15,15 @@ import "../../../public/scss/pages/profil/partenaire/profilContent.scss";
 import "../../../public/scss/pages/profil/partenaire/profilContentResponsive.scss";
 import "../../../public/scss/pages/profil/table.scss";
 
+interface PartnerData {
+  num_phone: string,
+  name: string,
+  siret: string,
+  address: string,
+  iban: string,
+  city: string,
+  code_postal: string,
+}
 export default function ProfilEntrepriseContent() {
   const [showServices, setShowServices] = React.useState(false);
   const [showReservations, setShowReservations] = React.useState(false);
@@ -22,62 +31,64 @@ export default function ProfilEntrepriseContent() {
   const [showProfil, setShowProfil] = React.useState(true);
 
   const [userData, setUserData] = React.useState();
-  const [partnerData, setPartnerData] = React.useState();
+  const [partnerData, setPartnerData] = React.useState<PartnerData | undefined>();
   const [modoClient, setModoClient] = React.useState(false);
   const [modoPartner, setModoPartner] = React.useState(false);
 
   const [partnerCompanyId, setPartnerCompanyId] = React.useState();
-  const [partnerCompanyAddress, setPartnerCompanyAddress] = React.useState();
-  const [partnerCompanyCity, setPartnerCompanyCity] = React.useState();
-  const [partnerCompanyCodePostal, setPartnerCompanyCodePostal] =
-    React.useState();
-  const [partnerCompanyPhone, setPartnerCompanyPhone] = React.useState();
+  const [partnerCompanyAddress, setPartnerCompanyAddress] = React.useState('');
+  const [partnerCompanyCity, setPartnerCompanyCity] = React.useState('');
+  const [partnerCompanyCodePostal, setPartnerCompanyCodePostal] = React.useState('');
+  const [partnerCompanyPhone, setPartnerCompanyPhone] = React.useState('');
 
-  const [partnerServices, setPartnerServices] = React.useState();
-  const [responseForm, setResponseForm] = React.useState();
+  const [partnerServices, setPartnerServices] = React.useState([]);
+  const [responseForm, setResponseForm] = React.useState<number | undefined>(undefined);
 
-  const [nameService, setNameService] = React.useState();
-  const [priceService, setPriceService] = React.useState();
-  const [descriptionService, setDescriptionService] = React.useState();
-  const [averageTimeService, setAverageTimeService] = React.useState();
-  const [categoryService, setCategoryService] = React.useState();
+  const [nameService, setNameService] = React.useState('');
+  const [priceService, setPriceService] = React.useState('');
+  const [descriptionService, setDescriptionService] = React.useState('');
+  const [averageTimeService, setAverageTimeService] = React.useState('');
+  const [categoryService, setCategoryService] = React.useState('');
 
   React.useEffect(() => {
     const fetchUserAndPartnerData = async () => {
       const userToken = cookieCutter.get("SESSID");
 
-      const getUserData = await getMe(userToken);
+      if (userToken) {
 
-      if (getUserData.statusCode === 401) {
-        window.location.href = "/connexion";
-        console.log("Erreur");
-        return;
-      }
 
-      if (getUserData && getUserData["modo_client_company"])
-        setModoClient(true);
-      if (getUserData && getUserData["modo_partner_company"])
-        setModoPartner(true);
-      if (getUserData && getUserData["partner_company"]["id"])
-        setPartnerCompanyId(getUserData["partner_company"]["id"]);
-      setUserData(getUserData);
+        const getUserData = await getMe(userToken);
+        console.log(getUserData);
+        if (getUserData.statusCode === 401) {
+          window.location.href = "/connexion";
+          console.log("Erreur");
+          return;
+        }
 
-      if (getUserData["partner_company"]["id"] !== undefined) {
-        const services = await getServices(
-          getUserData["partner_company"]["id"],
-          userToken
-        );
-        setPartnerServices(services);
-      }
+        if (getUserData && getUserData["modo_client_company"])
+          setModoClient(true);
+        if (getUserData && getUserData["modo_partner_company"])
+          setModoPartner(true);
+        if (getUserData && getUserData["partner_company"]["id"])
+          setPartnerCompanyId(getUserData["partner_company"]["id"]);
+        setUserData(getUserData);
 
-      setPartnerData(getUserData["partner_company"]);
-    };
+        if (getUserData["partner_company"]["id"] !== undefined) {
+          const services = await getServices(
+            getUserData["partner_company"]["id"],
+            userToken
+          );
+          setPartnerServices(services);
+        }
 
+        setPartnerData(getUserData["partner_company"]);
+      };
+    }
     fetchUserAndPartnerData();
   }, []);
 
   const handleModifyPartnerSubmit = async (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: any
   ) => {
     event.preventDefault();
 
@@ -90,28 +101,38 @@ export default function ProfilEntrepriseContent() {
       city: partnerCompanyCity,
       code_postal: partnerCompanyCodePostal,
     };
-    const response = await updatePartner(partnerDataForModify, userToken);
+    if (userToken) {
+      const response = await updatePartner(partnerDataForModify, userToken);
 
-    setResponseForm(response);
+      if (response) {
+        setResponseForm(response);
+      }
+    }
   };
 
   const handleAddServiceSubmit = async (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: any
   ) => {
     event.preventDefault();
 
     const userToken = cookieCutter.get("SESSID");
     const serviceData = {
       name: nameService,
-      price: priceService,
+      price: parseInt(priceService),
       average_time: averageTimeService,
       partner_company: partnerCompanyId,
       code_postal: partnerCompanyCodePostal,
       category_service: null,
     };
-    const response = await createService(userToken, serviceData);
+    if (userToken) {
+      const response = await createService(userToken, serviceData);
 
-    setResponseForm(response);
+      if (response) {
+        setResponseForm(response);
+      }
+    }
+
+
   };
 
   const handleBackClick = () => {
@@ -154,18 +175,18 @@ export default function ProfilEntrepriseContent() {
               </tr>
             </thead>
             {partnerServices
-              ? partnerServices.map((partnerService: any, index: number) => (
-                  <tbody key={partnerService.id}>
-                    <tr>
-                      <td data-label="Categorie">{partnerService.category}</td>
-                      <td data-label="Nom">{partnerService.name}</td>
-                      <td data-label="Prix">{partnerService.price} €</td>
-                      <td data-label="Temps moyen">
-                        {partnerService.average_time}
-                      </td>
-                    </tr>
-                  </tbody>
-                ))
+              ? partnerServices.map((partnerService: any) => (
+                <tbody key={partnerService.id}>
+                  <tr>
+                    <td data-label="Categorie">{partnerService['category_service'].name ? partnerService['category_service'].name : ''}</td>
+                    <td data-label="Nom">{partnerService.name}</td>
+                    <td data-label="Prix">{partnerService.price} €</td>
+                    <td data-label="Temps moyen">
+                      {partnerService.average_time}
+                    </td>
+                  </tr>
+                </tbody>
+              ))
               : ""}
           </table>
         </div>

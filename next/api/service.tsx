@@ -74,8 +74,7 @@ export const createService = async (token: string, serviceInfos: Object) => {
             }
         );
 
-        const status = response.status;
-        console.log(status)
+        return response.status;
 
     } catch (err) {
         console.log(err);

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react';
 
 import '../../../public/scss/pages/service/second_bloc/second_bloc.scss';

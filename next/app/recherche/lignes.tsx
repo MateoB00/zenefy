@@ -21,7 +21,7 @@ export default function Lignes() {
       if (category && city) {
         const services = await getServicesByCityAndCategory(city, category);
 
-        services.map((service) => {
+        services.map((service: any) => {
           if (service["category_service"].name === "Coiffure")
             service.image = "/images/accueil/categorie_coiffure.png";
           if (service["category_service"].name === "Manucure")

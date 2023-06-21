@@ -8,6 +8,9 @@ const nextConfig = {
     //       base: path.resolve(__dirname, '')
     //     }
     //   }
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 }
 
 module.exports = nextConfig

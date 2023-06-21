@@ -9,21 +9,14 @@ import InputConnexion from '../../components/inputs/input';
 import ButtonConnexion from '../../components/buttons/button';
 
 import { authLogin } from '../../api/user'
-import { NextRequest } from 'next/server';
 
 
-export default function Page(req, res) {
+export default function Page() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    // const [showPassword, setShowPassword] = React.useState(false);
 
-    // const [tokenClient, setTokenClient] = React.useState("");
-    // // const [showFormClient, setShowFormClient] = React.useState(false)
-    // 
-    // const [tokenPartenaire, setTokenPartenaire] = React.useState("");
-    // const [showFormPartenaire, setShowFormPartenaire] = React.useState(false)
 
-    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
 
         const response = await authLogin(email, password)
