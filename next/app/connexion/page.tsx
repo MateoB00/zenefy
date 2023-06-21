@@ -20,7 +20,7 @@ export default function Page() {
         event.preventDefault();
 
         const response = await authLogin(email, password)
-        if (response == 201) window.location.href = '/accueil';
+        if (response == 201) window.location.href = '/';
     }
 
     return (

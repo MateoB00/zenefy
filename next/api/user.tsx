@@ -3,7 +3,7 @@ import cookieCutter from 'cookie-cutter';
 export const getMe = async (token: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/user/me`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}user/me`,
             {
                 method: 'GET',
                 headers: {
@@ -25,7 +25,7 @@ export const getMe = async (token: string) => {
 export const authLogin = async (username: string, password: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/auth/login`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}auth/login`,
             {
                 method: 'POST',
                 body: JSON.stringify({
@@ -61,7 +61,7 @@ export const authLogout = async () => {
 export const updateUser = async (userData: Object, token: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/user/me`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}user/me`,
             {
                 method: 'PUT',
                 body: JSON.stringify(
@@ -85,7 +85,7 @@ export const updateUser = async (userData: Object, token: string) => {
 export const fetchReservations = async (token: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/user/reservations`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}user/reservations`,
             {
                 method: 'GET',
                 headers: {

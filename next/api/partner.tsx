@@ -1,7 +1,7 @@
 export const getPartner = async (id: number) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/partner_company/${id}`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}partner_company/${id}`,
             {
                 method: 'GET',
                 headers: {

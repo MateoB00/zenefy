@@ -1,7 +1,7 @@
 export const updatePartner = async (partnerData: Object, token: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/user/partner/update`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}user/partner/update`,
             {
                 method: 'PUT',
                 body: JSON.stringify(
@@ -23,7 +23,7 @@ export const updatePartner = async (partnerData: Object, token: string) => {
 export const getServices = async (partner_id: number, token: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/partner_company/${partner_id}/services`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}partner_company/${partner_id}/services`,
             {
                 method: 'GET',
                 headers: {

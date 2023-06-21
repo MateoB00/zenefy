@@ -1,7 +1,7 @@
 export const getService = async (id: number) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/service/${id}`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service/${id}`,
             {
                 method: 'GET',
                 headers: {
@@ -21,7 +21,7 @@ export const getService = async (id: number) => {
 export const getServicesByCityAndCategory = async (city: string, category: string) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/service/category_city/${category}/${city}`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service/category_city/${category}/${city}`,
             {
                 method: 'GET',
                 headers: {
@@ -41,7 +41,7 @@ export const getServicesByCityAndCategory = async (city: string, category: strin
 export const getServicesByPartner = async (partner_id: any) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/service/partner/${partner_id}`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service/partner/${partner_id}`,
             {
                 method: 'GET',
                 headers: {
@@ -61,7 +61,7 @@ export const getServicesByPartner = async (partner_id: any) => {
 export const createService = async (token: string, serviceInfos: Object) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/service`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service`,
             {
                 method: 'POST',
                 body: JSON.stringify(

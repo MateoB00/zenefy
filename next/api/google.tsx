@@ -1,7 +1,7 @@
 export const fetchCompanyData = async (partner_company: Object) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/api/google/informations_company`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}api/google/informations_company`,
             {
                 method: 'POST',
                 body: JSON.stringify(

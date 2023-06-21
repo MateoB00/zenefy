@@ -68,7 +68,7 @@ export default function Header() {
             <div className="menu">
                 <h1>
                     <LinkAccueil
-                        href='/accueil'
+                        href='/'
                         text='ZENEFY'
                     />
                 </h1>

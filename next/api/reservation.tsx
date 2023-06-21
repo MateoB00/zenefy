@@ -1,7 +1,7 @@
 export const createReservation = async (token: string, reservationInfos: Object) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/reservation`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}reservation`,
             {
                 method: 'POST',
                 body: JSON.stringify(
@@ -26,7 +26,7 @@ export const createReservation = async (token: string, reservationInfos: Object)
 export const getReservationsByPartner = async (partner_id: any) => {
     try {
         const response = await fetch(
-            `http://localhost:3001/reservation/partner/${partner_id}`,
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}reservation/partner/${partner_id}`,
             {
                 method: 'GET',
                 headers: {
