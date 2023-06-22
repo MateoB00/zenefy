@@ -52,21 +52,13 @@ export default function Page() {
                     />
                 </form>
                 <div className="footer">
-                    <ButtonConnexion
+                <ButtonConnexion
                         className="buttonGold"
                         type='submit'
-                        text="Partenaire"
-                    // onClick={() => {
-                    //     setShowFormPartenaire(true);
-                    // }}
-                    />
-                    <ButtonConnexion
-                        className="buttonGold"
-                        type='submit'
-                        text="Client"
-                    // onClick={() => {
-                    //     setShowFormClient(true);
-                    // }}
+                        text="Partenaire / Client"
+                    onClick={() => {
+                        window.location.href = '/zenefy_pro'
+                    }}
                     />
                 </div>
             </div>

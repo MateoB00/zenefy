@@ -133,7 +133,7 @@ href='/'
 >
                 <Image
                 className='logo'
-                src={logoUrl}
+                src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
                 alt='Logo'
                 width={120}
                 height={120}

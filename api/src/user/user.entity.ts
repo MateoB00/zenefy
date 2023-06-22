@@ -26,6 +26,11 @@ export class User {
     address: string;
 
     @Column({
+        default: false
+    })
+    admin: boolean;
+
+    @Column({
         length: 35
     })
     num_phone: string;

@@ -114,9 +114,9 @@ export default function Page() {
                         className="buttonGold"
                         type='submit'
                         text="Partenaire / Client"
-                    // onClick={() => {
-                    //     setShowFormPartenaire(true);
-                    // }}
+                    onClick={() => {
+                        window.location.href = '/zenefy_pro'
+                    }}
                     />
                 </div>
             </div>
