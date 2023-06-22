@@ -15,41 +15,41 @@ export default function Footer() {
                 <div className="footer_mobile">
                     <h1 className="fs-4 text-center">ZENEFY</h1>
                     <ul className="list_footer">
-                        <li>NOS ACTIVITES
+                        <li>Nos activités
                         </li>
                         <li>
                             <Link
                                 href='/nos_nouveautes'
-                                text='NOS NOUVEAUTES'
+                                text='Nos nouveautés'
                             />
                         </li>
                         <li>
-                            A PROPOS
+                            A propos
                         </li>
                         <li>
-                            <a href="/zenefy_pro">ZENEFY PRO</a>
+                            <a href="/zenefy_pro">Zenefy PRO</a>
                         </li>
                     </ul>
                 </div>
                 <div className="footer_mobile">
-                    <h1 className="fs-4 text-center">Mon compte</h1>
+                    <h1 className="fs-4 text-center">MON COMPTE</h1>
                     <ul className="list_footer">
                         <li>
-                        <a href='/inscription'>INSCRIPTION</a>
+                        <a href='/inscription'>Inscription</a>
                         </li>
                         <li>
-                        <a href='/connexion'>CONNEXION</a>
+                        <a href='/connexion'>Connexion</a>
                         </li>
                         <li>
-                            <a href='/profil'>MON COMPTE</a>
+                            <a href='/profil'>Mon compte</a>
                         </li>
                         <li>
-                            CONTACTEZ-NOUS
+                            Contactez-nous
                         </li>
                     </ul>
                 </div>
                 <div className="footer_mobile">
-                    <h1 className="fs-4 text-center">Autres</h1>
+                    <h1 className="fs-4 text-center">AUTRES</h1>
                     <ul className="list_footer">
                         <li>Préférences cookies
                         </li>
