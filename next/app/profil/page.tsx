@@ -13,7 +13,7 @@ export default function Page() {
 
     return (
         <>
-            <Header />
+            <Header logoColor={false}/>
             <ProfilUserContent />
             <Footer />
         </>

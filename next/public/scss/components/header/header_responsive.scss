@@ -48,6 +48,15 @@
             padding: 10px 10px 10px 30px;
             width: 80%;
 
+            .activite{
+                background-color: $primary_color;
+                padding-right: 10px !important;
+            }
+            .lieu {
+                background: none;
+                color: $primary_color;
+            }
+
             // .activite {
             //     border-right: 2px solid $primary_color;
             //     padding: 0px 20px 0px 0px;

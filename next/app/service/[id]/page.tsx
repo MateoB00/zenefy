@@ -69,7 +69,7 @@ export default function Page() {
     }
     return (
         <div>
-            <Header />
+            <Header logoColor={false}/>
             {
                 service ?
                     <div>

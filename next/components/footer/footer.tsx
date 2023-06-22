@@ -27,7 +27,7 @@ export default function Footer() {
                             A PROPOS
                         </li>
                         <li>
-                            ZENEFY PRO
+                            <a href="/zenefy_pro">ZENEFY PRO</a>
                         </li>
                     </ul>
                 </div>
@@ -35,13 +35,13 @@ export default function Footer() {
                     <h1 className="fs-4 text-center">Mon compte</h1>
                     <ul className="list_footer">
                         <li>
-                            INSCRIPTION
+                        <a href='/inscription'>INSCRIPTION</a>
                         </li>
                         <li>
-                            CONNEXION
+                        <a href='/connexion'>CONNEXION</a>
                         </li>
                         <li>
-                            MON COMPTE
+                            <a href='/profil'>MON COMPTE</a>
                         </li>
                         <li>
                             CONTACTEZ-NOUS

@@ -85,19 +85,19 @@ export default function Page() {
                                         setShowRegister(false)
                                     }}
                                 />
-                            </> : <>        <InputConnexion
+                            </> : <>        <input
                                 className="test"
                                 type="email"
                                 name="email"
-                                placeHolder="Email"
+                                placeholder="Email"
                                 onChange={
                                     (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
                             />
-                                <InputConnexion
+                                <input
                                     className="test"
                                     type="password"
                                     name="password"
-                                    placeHolder="Password"
+                                    placeholder="Password"
                                     onChange={
                                         (e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
                                 />

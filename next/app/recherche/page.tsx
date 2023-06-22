@@ -15,7 +15,7 @@ export default function Page() {
 
     return (
         <>
-            <Header />
+            <Header logoColor={false}/>
             <div className='recherche'>
                 <Lignes />
             </div>

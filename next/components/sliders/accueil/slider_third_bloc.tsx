@@ -37,7 +37,7 @@ export default function SlideThirdBloc(
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star checked"></span>
                     <span className="fa fa-star"></span>
                 </div>
                 <div>
@@ -68,8 +68,8 @@ export default function SlideThirdBloc(
                 <div>
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star "></span>
-                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
                     <span className="fa fa-star"></span>
                 </div>
                 <div>
@@ -90,7 +90,7 @@ export default function SlideThirdBloc(
                 </div>
                 <div>
                     <ReviewSlideAccueil
-                        author='Iss'
+                        author='Croissant'
                         category='Muchinois'
                     />
                 </div>

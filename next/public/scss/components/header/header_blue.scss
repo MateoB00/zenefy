@@ -84,3 +84,7 @@
         }
     }
 }
+
+.logo[src*="/images/logo_blanc.png"]  {
+    background-image: url('/images/logo_blanc.png') !important;
+}

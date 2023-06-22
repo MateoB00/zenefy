@@ -12,7 +12,7 @@ export default function Page() {
 
   return (
     <>
-      <Header />
+      <Header logoColor={true}/>
       <FirstBlocAccueil />
       <SecondBlocAccueil />
       <ThirdBlocAccueil />

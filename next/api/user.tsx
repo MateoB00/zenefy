@@ -1,3 +1,4 @@
+// @ts-nocheck
 import cookieCutter from 'cookie-cutter';
 
 export const getMe = async (token: string) => {

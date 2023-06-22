@@ -9,11 +9,12 @@ import '../../public/scss/components/header/header.scss';
 import '../../public/scss/components/header/header_responsive.scss';
 
 import LinkAccueil from '../links/link';
+import Image from '../images/image';
 import Input from '../inputs/input';
 import { authLogout, getMe } from '../../api/user'
 
 
-export default function Header() {
+export default function Header({ logoColor }) {
     const [userData, setUserData] = React.useState()
     const [modoClient, setModoClient] = React.useState(false)
     const [modoPartner, setModoPartner] = React.useState(false)
@@ -23,6 +24,9 @@ export default function Header() {
 
     const [selectedCategory, setSelectedCategory] = React.useState('');
     const [selectedLieu, setSelectedLieu] = React.useState('')
+
+    const [logoUrl, setLogoUrl] = React.useState('/images/logo_blanc.png')
+
 
     React.useEffect(() => {
         const fetchUserData = async () => {
@@ -68,12 +72,19 @@ export default function Header() {
     return (
         <div className="header">
             <div className="menu">
-                <h1>
-                    <LinkAccueil
-                        href='/'
-                        text='ZENEFY'
-                    />
-                </h1>
+                
+<LinkAccueil
+href='/'
+>
+                <Image
+                className='logo'
+                src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
+                alt='Logo'
+                width={120}
+                height={120}
+                loading={'lazy'}
+            /> 
+                </LinkAccueil>
                 <div className="mid_side">
                     <select name="category" id="category" className="activite" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
                         <option value="">Types d&apos;activités</option>
@@ -117,12 +128,18 @@ export default function Header() {
 
             <div className="menu_mobile">
                 <div className="top_side">
-                    <h1>
-                        <LinkAccueil
-                            href='/accueil'
-                            text='ZENEFY'
-                        />
-                    </h1>
+                    <LinkAccueil
+href='/'
+>
+                <Image
+                className='logo'
+                src={logoUrl}
+                alt='Logo'
+                width={120}
+                height={120}
+                loading={'lazy'}
+            /> 
+                </LinkAccueil>
                     <div className="right_side">
                         <LinkAccueil
                             href='#'
