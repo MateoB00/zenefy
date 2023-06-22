@@ -197,7 +197,8 @@ href='/'
                                         }}
                                     >
                                     </LinkAccueil>
-                                </p><p className="item_2">
+                                </p>
+                                <p className="item_2">
                                         <LinkAccueil
                                             href='/profil'
                                             text='Mon Profil'
@@ -215,7 +216,8 @@ href='/'
                                         id=''
                                     >
                                     </LinkAccueil>
-                                </p><p className="item_2">
+                                </p>
+                                <p className="item_2">
                                         <LinkAccueil
                                             href='/connexion'
                                             text='Connexion'

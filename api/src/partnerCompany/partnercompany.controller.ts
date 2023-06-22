@@ -4,7 +4,7 @@ import {
     Get,
     Param,
     Post,
-    Put,
+    Request,
     UseGuards
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -18,7 +18,9 @@ export class PartnerCompanyController {
 
     @Post()
     @UseGuards(AuthGuard('jwt'))
-    create(@Body() partnerCompany: PartnerCompany): Promise<PartnerCompany> {
+    create(@Request() req: any,@Body() partnerCompany: PartnerCompany): Promise<any> {
+        console.log('aaaaaaaaaaaaaa')
+        const loggedInUser = req.user
         return this.partnerCompanyService.create(partnerCompany)
     }
 

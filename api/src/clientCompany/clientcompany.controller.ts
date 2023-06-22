@@ -3,11 +3,12 @@ import {
     Controller,
     Get,
     Param,
-    Patch,
+    Request,
     Post,
-    Put
+    Put,
+    UseGuards
 } from '@nestjs/common';
-
+import { AuthGuard } from '@nestjs/passport';
 import { ClientCompany } from "./clientcompany.entity";
 import { ClientCompanyService } from "./clientcompany.service";
 
@@ -16,7 +17,9 @@ export class ClientCompanyController {
     constructor(private clientCompanyService: ClientCompanyService) { }
 
     @Post()
-    create(@Body() clientCompany: ClientCompany): Promise<ClientCompany> {
+    @UseGuards(AuthGuard('jwt'))
+    create(@Request() req: any,@Body() clientCompany: ClientCompany): Promise<any> {
+        const loggedInUser = req.user
         return this.clientCompanyService.create(clientCompany)
     }
 

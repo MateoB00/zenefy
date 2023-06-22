@@ -9,10 +9,13 @@ export class PartnerCompanyService {
     constructor(@InjectRepository(PartnerCompany) private partnerCompanyRepository: Repository<PartnerCompany>) { }
 
     async create(partnerCompany: PartnerCompany) {
+        console.log(partnerCompany)
         const newPartnerCompany = {
             name: partnerCompany.name,
             siret: partnerCompany.siret,
             address: partnerCompany.address,
+            city: partnerCompany.city,
+            code_postal: partnerCompany.code_postal,
             num_phone: partnerCompany.num_phone,
             iban: partnerCompany.iban,
         }

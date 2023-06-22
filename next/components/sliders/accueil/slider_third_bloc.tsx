@@ -90,8 +90,8 @@ export default function SlideThirdBloc(
                 </div>
                 <div>
                     <ReviewSlideAccueil
-                        author='Croissant'
-                        category='Muchinois'
+                        author='Eric'
+                        category='Coiffure'
                     />
                 </div>
             </SwiperSlide>

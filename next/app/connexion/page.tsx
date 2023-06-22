@@ -7,6 +7,7 @@ import '../../public/scss/pages/connexion/connexion.scss';
 import '../../public/scss/pages/connexion/connexion_responsive_1.scss';
 import InputConnexion from '../../components/inputs/input';
 import ButtonConnexion from '../../components/buttons/button';
+import Image from '../../components/images/image';
 
 import { authLogin } from '../../api/user'
 
@@ -26,7 +27,15 @@ export default function Page() {
     return (
         <div className="connexion">
             <div className="box m-auto">
-                <a href="/"><h1 className='text-center'>ZENEFY</h1></a>
+                <a href="/">  
+                <Image
+                className='logo'
+                src={'/images/logo_blanc.png'}
+                alt='Logo'
+                width={120}
+                height={120}
+                loading={'lazy'}
+            /> </a>
                 <form onSubmit={handleSubmit} className="form">
                     <InputConnexion
                         className="test"
@@ -55,7 +64,7 @@ export default function Page() {
                 <ButtonConnexion
                         className="buttonGold"
                         type='submit'
-                        text="Partenaire / Client"
+                        text="Devenir Partenaire / Client"
                     onClick={() => {
                         window.location.href = '/zenefy_pro'
                     }}

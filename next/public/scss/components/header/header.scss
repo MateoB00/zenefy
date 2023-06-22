@@ -24,14 +24,14 @@
 
 
             select.activite {
-                border: none;
-                border-right: 2px solid $primary_color;
+                border: none ;
+                border-right: 2px solid $primary_color !important;
                 outline: none;
                 color: $primary_color;
                 font-weight: bold;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
+                // -webkit-appearance: none;
+                // -moz-appearance: none;
+                // appearance: none;
                 background-repeat: no-repeat;
                 background-position: right .7em top 50%;
                 padding-right: 1.5em;

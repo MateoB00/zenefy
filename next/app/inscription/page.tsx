@@ -8,6 +8,7 @@ import '../../public/scss/pages/connexion/connexion.scss';
 import '../../public/scss/pages/connexion/connexion_responsive_1.scss';
 import InputConnexion from '../../components/inputs/input';
 import ButtonConnexion from '../../components/buttons/button';
+import Image from '../../components/images/image';
 
 import { authRegister } from '../../api/user'
 
@@ -17,7 +18,6 @@ export default function Page() {
     const [password, setPassword] = React.useState("");
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
-    const [address, setAddress] = React.useState("");
     const [numPhone, setNumPhone] = React.useState("");
     const [showRegister, setShowRegister] = React.useState(true)
 
@@ -27,7 +27,7 @@ export default function Page() {
         const userData = {
             first_name: firstName,
             last_name: lastName,
-            address: address,
+            address: null,
             password: password,
             num_phone: numPhone,
             email: email
@@ -40,7 +40,13 @@ export default function Page() {
     return (
         <div className="connexion">
             <div className="box m-auto">
-                <a href="/"><h1 className='text-center'>ZENEFY</h1></a>
+                <a href="/"><Image
+                src='/images/logo_blanc.png'
+                alt='Logo'
+                width={120}
+                height={120}
+                loading={'lazy'}
+                ></Image></a>
                 <form onSubmit={handleSubmit} className="form">
                     {
                         showRegister ?
