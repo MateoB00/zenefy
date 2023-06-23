@@ -7,6 +7,8 @@ import { NextResponse } from 'next/server';
 
 import '../../public/scss/components/header/header.scss';
 import '../../public/scss/components/header/header_responsive.scss';
+import '../../public/scss/components/contact/contact.scss';
+
 
 import LinkAccueil from '../links/link';
 import Image from '../images/image';
@@ -29,6 +31,13 @@ export default function Header({ logoColor }) {
     const [selectedLieu, setSelectedLieu] = React.useState('')
 
     const [showConnexion, setShowConnexion] = React.useState(false)
+    const [showContact, setShowContact] = React.useState(false)
+    const [firstName, setFirstName] = React.useState('')
+    const [lastName, setLastName] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [subject, setSubject] = React.useState('')
+    const [message, setMessage] = React.useState('')
+    const [numPhone, setNumPhone] = React.useState('')
 
     React.useEffect(() => {
         const fetchUserData = async () => {
@@ -49,7 +58,9 @@ export default function Header({ logoColor }) {
     }, [])
 
 
-
+    const handleContactForm = () => {
+        window.location.href = '/';
+    }
     const handleLogoutSubmit = async (res: NextResponse) => {
         await authLogout(res)
         window.location.href = '/connexion';
@@ -71,6 +82,7 @@ export default function Header({ logoColor }) {
     const handleRedirectionServices = async () => {
         window.location.href = `/recherche?city=${selectedLieu}&category=${selectedCategory}`;
     }
+
     return (
         <div className="header">
             <div className="menu">
@@ -243,6 +255,10 @@ export default function Header({ logoColor }) {
                                 text='Contact'
                                 className=''
                                 id=''
+                                onClick={() => {
+                                    setShowContact(true)
+                                    handleMenuButtonClick()
+                                }}
                             >
                             </LinkAccueil>
                         </p>
@@ -296,6 +312,37 @@ export default function Header({ logoColor }) {
             }
             {
                 showConnexion ? <ConnexionPage showIt={showConnexion}></ConnexionPage> : null
+            }
+            {
+                showContact ? <div className="pop_up">
+                    <button className="close_button fw-bold"
+                        onClick={() => {
+                            setShowContact(false)
+                        }}>✕</button>
+                    <h1 className="text-center my-5">Contactez-nous</h1>
+                    <form onSubmit={handleContactForm}>
+                        <div className="inputs_popup mx-auto gap-3">
+                            <input name="nom" className="input_pop_up" type="text" placeholder="NOM"
+                                onChange={
+                                    (e: { target: { value: React.SetStateAction<string>; }; }) => setLastName(e.target.value)}></input>
+                            <input name="prenom" className="input_pop_up" type="text" placeholder="PRENOM" onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setFirstName(e.target.value)}></input>
+                            <input name="email_popup" className="input_pop_up" type="text" placeholder="ADRESSE MAIL" onChange={
+                                (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}></input>
+                            <input name="num_tel" className="input_pop_up" type="text" placeholder="NUMERO DE TELEPHONE"
+                                onChange={
+                                    (e: { target: { value: React.SetStateAction<string>; }; }) => setNumPhone(e.target.value)}></input>
+                            <input name="sujet" className="input_pop_up" type="text" placeholder="SUJET"
+                                onChange={
+                                    (e: { target: { value: React.SetStateAction<string>; }; }) => setSubject(e.target.value)}></input>
+
+                        </div>
+                        <div className="input_popup_message">
+                            <input name="message" className="input_pop_up" type="text" placeholder="MESSAGE"></input>
+                            <button type="submit" className="button_pop_up fw-bold">Envoyez</button>
+                        </div>
+                    </form>
+                </div> : null
             }
         </div >
     )

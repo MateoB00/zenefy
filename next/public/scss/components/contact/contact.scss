@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Montserrat:wght@400;700&display=swap');
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden !important;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+p {
+    margin: 0;
+    /* Ajoute une marge de 0 pixels entre les deux balises p */
+}
+
+.shadow_background {
+    background: linear-gradient(180deg, rgba(14, 28, 65, 0.92) 48.96%, rgba(14, 28, 65, 0) 100%);
+    opacity: 0.7;
+}
+
+.shadow_background2 {
+    background: linear-gradient(360deg, rgba(14, 28, 65, 0.92) 100%, rgba(14, 28, 65, 0) 100%);
+    opacity: 0.7;
+}
+
+/* .row * {
+    opacity: 1 !important;
+} */
+.bg_blue {
+    background-color: #0E1C41;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.text-end {
+    text-align: end;
+}
+
+
+
+/* .size_p {
+    font-size: 24px
+} */
+.blue {
+    color: #0E1C41;
+}
+
+.block {
+    background-color: #0E1C41;
+    color: white;
+}
+
+
+.color1 {
+    color: #0E1C41
+}
+
+
+
+
+
+
+.pop_up {
+    z-index: 2;
+    display: block;
+    background-color: #0E1C41;
+    position: fixed;
+    top: 0;
+    height: 90%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    color: white;
+}
+
+.burger_pop_up {
+    display: none;
+    background-color: #0E1C41;
+    position: fixed;
+    top: 0;
+    height: 30%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    color: white;
+}
+
+.burger_popup_message>p>a {
+    text-decoration: none;
+    color: white;
+}
+
+.inputs_popup {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.input_pop_up {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.603);
+}
+
+.close_button {
+    // position: absolute;
+    // top: 0;
+    // right: 15px;
+    // background-color: transparent;
+    // border: none;
+    // color: white;
+    // font-size: 40px;
+}
+
+.input_popup_message {
+    position: absolute;
+    bottom: 100px;
+    left: 15%;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.button_pop_up {
+    width: 30%;
+    margin-top: 20px;
+    border: none;
+    background-color: white;
+    color: #0E1C41;
+}
+
+
+.nos_services>.second_part {
+    background-color: #1F346B;
+    color: white;
+
+    display: flex;
+    align-items: center;
+}

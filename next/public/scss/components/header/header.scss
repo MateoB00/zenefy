@@ -112,6 +112,9 @@
             padding: 10px 0px 10px 20px;
             border-top: 1px solid grey;
             border-bottom: 1px solid grey;
+        }
+
+        .item_3:hover {
             background-image: $background_gold_gradient;
         }
 
@@ -150,8 +153,11 @@
         .item_3_zenefy {
             padding: 10px 0px 10px 20px;
             border-radius: 20px;
-            background-image: $background_gold_gradient;
             border: 1px solid grey;
+        }
+
+        .item_3_zenefy:hover {
+            background-image: $background_gold_gradient;
         }
 
         .item_4_zenefy {
