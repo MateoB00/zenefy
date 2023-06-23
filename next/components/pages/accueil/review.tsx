@@ -7,12 +7,13 @@ export default function ReviewSlideAccueil(
         className?: string
         author?: string
         category?: string
+        text?: string
     }
 ) {
     return (
         <div className="review">
             <p className="text">
-                Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                {props.text}
             </p>
             <p className='author'>
                 {props.author}

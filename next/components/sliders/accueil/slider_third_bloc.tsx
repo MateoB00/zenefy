@@ -38,28 +38,13 @@ export default function SlideThirdBloc(
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star checked"></span>
                 </div>
                 <div>
                     <ReviewSlideAccueil
                         author='Pauline'
                         category='Yoga'
-                    />
-                </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-                <div>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                </div>
-                <div>
-                    <ReviewSlideAccueil
-                        author='Marie'
-                        category='Coiffure'
+                        text="Nos salariés sont davantage productifs depuis qu'on opte pour la solution Zenefy, je recommande !"
                     />
                 </div>
             </SwiperSlide>
@@ -74,8 +59,26 @@ export default function SlideThirdBloc(
                 </div>
                 <div>
                     <ReviewSlideAccueil
-                        author='Jean'
+                        author='Marie'
+                        category='Coiffure'
+                        text="Encore une fois, nous remercions Zenefy d'avoir permis à nos employés de réserver des activités de coiffure à un prix réduit."
+                    />
+                </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+                <div>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star"></span>
+                </div>
+                <div>
+                    <ReviewSlideAccueil
+                        author='Sophie'
                         category='Manucure'
+                        text="Le personnel est extrêmement professionnel et attentionné, offrant un service de haute qualité."
                     />
                 </div>
             </SwiperSlide>
@@ -92,6 +95,7 @@ export default function SlideThirdBloc(
                     <ReviewSlideAccueil
                         author='Eric'
                         category='Coiffure'
+                        text="Le résultat de l'impact sur nos a dépassé nos attentes. Merci Zenefy"
                     />
                 </div>
             </SwiperSlide>
