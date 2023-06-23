@@ -18,6 +18,26 @@ export const getService = async (id: number) => {
     }
 }
 
+export const getAllService = async () => {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        const serviceData = await response.json();
+        return serviceData;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 export const getServicesByCityAndCategory = async (city: string, category: string) => {
     try {
         const response = await fetch(

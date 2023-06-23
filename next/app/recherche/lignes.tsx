@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import "../../public/scss/pages/recherche/ligne.scss";
 import "../../public/scss/pages/recherche/ligne_responsive.scss";
 
-import { getServicesByCityAndCategory, getServicesByCategory, getServicesByCity } from "../../api/service";
+import { getServicesByCityAndCategory, getServicesByCategory, getServicesByCity, getAllService } from "../../api/service";
 import ImagePage from "../../components/images/image";
 import LinkAccueil from "@/components/links/link";
 export default function Lignes() {
@@ -77,6 +77,24 @@ export default function Lignes() {
         });
         setServices(services);
 
+      } else {
+        const services = await getAllService();
+
+        services.map((service: any) => {
+          if (service["category_service"].name === "Coiffure")
+            service.image = "/images/accueil/categorie_coiffure.png";
+          if (service["category_service"].name === "Manucure")
+            service.image = "/images/accueil/categorie_manucure.png";
+          if (service["category_service"].name === "Massage")
+            service.image = "/images/accueil/categorie_massage.png";
+          if (service["category_service"].name === "Musculation")
+            service.image = "/images/accueil/categorie_musculation.png";
+          if (service["category_service"].name === "Spa")
+            service.image = "/images/accueil/categorie_spa.png";
+          if (service["category_service"].name === "Yoga")
+            service.image = "/images/accueil/categorie_yoga.png";
+        });
+        setServices(services);
       }
     };
 

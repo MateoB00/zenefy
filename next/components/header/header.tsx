@@ -89,6 +89,7 @@ export default function Header({ logoColor }) {
         if (selectedLieu !== '') {
             window.location.href = `/recherche?city=${selectedLieu}`;
         }
+        window.location.href = `/recherche?city=${selectedLieu}`;
     }
 
     return (
