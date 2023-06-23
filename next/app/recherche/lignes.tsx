@@ -38,9 +38,6 @@ export default function Lignes() {
         });
         setServices(services);
       } else if (category) {
-        console.log('category')
-        console.log(category)
-        console.log('category')
         const services = await getServicesByCategory(category);
 
         services.map((service: any) => {
@@ -79,7 +76,9 @@ export default function Lignes() {
 
       } else {
         const services = await getAllService();
-
+console.log('services')
+console.log(services)
+console.log('services')
         services.map((service: any) => {
           if (service["category_service"].name === "Coiffure")
             service.image = "/images/accueil/categorie_coiffure.png";

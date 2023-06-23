@@ -27,7 +27,7 @@ export default function Header({ logoColor }) {
     const [showBurgerMenu, setShowBurgerMenu] = React.useState(false)
     const [showZenefyBurgerMenu, setZenefyShowBurgerMenu] = React.useState(false)
 
-    const [selectedCategory, setSelectedCategory] = React.useState('');
+    const [selectedCategory, setSelectedCategory] = React.useState('Coiffure');
     const [selectedLieu, setSelectedLieu] = React.useState('')
 
     const [showConnexion, setShowConnexion] = React.useState(false)
@@ -80,16 +80,17 @@ export default function Header({ logoColor }) {
     }
 
     const handleRedirectionServices = async () => {
-        if (selectedLieu !== '' && selectedCategory !== '') {
+        if (selectedLieu && selectedCategory) {
             window.location.href = `/recherche?city=${selectedLieu}&category=${selectedCategory}`;
         }
-        if (selectedCategory !== '') {
+        if (selectedCategory) {
             window.location.href = `/recherche?category=${selectedCategory}`;
         }
-        if (selectedLieu !== '') {
+
+        if (selectedLieu) {
             window.location.href = `/recherche?city=${selectedLieu}`;
         }
-        window.location.href = `/recherche?city=${selectedLieu}`;
+        window.location.href = `/recherche`;
     }
 
     return (
