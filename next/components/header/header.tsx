@@ -80,7 +80,15 @@ export default function Header({ logoColor }) {
     }
 
     const handleRedirectionServices = async () => {
-        window.location.href = `/recherche?city=${selectedLieu}&category=${selectedCategory}`;
+        if (selectedLieu !== '' && selectedCategory !== '') {
+            window.location.href = `/recherche?city=${selectedLieu}&category=${selectedCategory}`;
+        }
+        if (selectedCategory !== '') {
+            window.location.href = `/recherche?category=${selectedCategory}`;
+        }
+        if (selectedLieu !== '') {
+            window.location.href = `/recherche?city=${selectedLieu}`;
+        }
     }
 
     return (
