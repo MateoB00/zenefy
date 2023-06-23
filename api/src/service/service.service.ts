@@ -58,12 +58,12 @@ export class ServiceService {
     }
 
     findMany() {
-        const fetchAll = this.serviceRepository.find(
-            //exemple de condition dans le findMany
-            // { where: { id: 1 } }
-        )
+        const services = this.serviceRepository.createQueryBuilder('service')
+            .leftJoinAndSelect('service.partner_company', 'partner_company')
+            .leftJoinAndSelect('service.category_service', 'category_service')
+            .getMany();
 
-        return fetchAll;
+        return services;
     }
 
     async update(id: number, service: Service) {
