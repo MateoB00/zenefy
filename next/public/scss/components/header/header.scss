@@ -24,14 +24,14 @@
 
 
             select.activite {
-                border: none ;
+                border: none;
                 border-right: 2px solid $primary_color !important;
                 outline: none;
                 color: $primary_color;
                 font-weight: bold;
-                // -webkit-appearance: none;
-                // -moz-appearance: none;
-                // appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
                 background-repeat: no-repeat;
                 background-position: right .7em top 50%;
                 padding-right: 1.5em;
@@ -67,12 +67,12 @@
         .right_side {
             cursor: pointer;
             width: fit-content;
-            background-color: $primary_color;
+            background-color: #ffff;
             padding: 10px 10px 10px 10px;
             border-radius: 10px;
 
             .burger-icon {
-                @include burger(25px, 3px, 5px, #ffffff);
+                @include burger(25px, 3px, 5px, $primary_color);
             }
 
             .menu-button.is-active .burger-icon {

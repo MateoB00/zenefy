@@ -33,10 +33,10 @@
         }
 
         .right_side {
-            background-color: #ffff !important;
+            background-color: $primary_color !important;
 
             .burger-icon {
-                @include burger(25px, 3px, 5px, $primary_color !important);
+                @include burger(25px, 3px, 5px, #ffff !important);
             }
 
             .menu-button.is-active .burger-icon {
@@ -50,10 +50,10 @@
             color: #fff !important;
 
             .right_side {
-                background-color: #fff !important;
+                background-color: $primary_color !important;
 
                 .burger-icon {
-                    @include burger(25px, 3px, 5px, $primary_color !important);
+                    @include burger(25px, 3px, 5px, #ffff !important);
                 }
 
                 .menu-button-mobile.is-active .burger-icon {
@@ -85,6 +85,6 @@
     }
 }
 
-.logo[src*="/images/logo_blanc.png"]  {
+.logo[src*="/images/logo_blanc.png"] {
     background-image: url('/images/logo_blanc.png') !important;
 }

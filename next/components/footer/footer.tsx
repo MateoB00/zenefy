@@ -1,11 +1,14 @@
+// @ts-nocheck
+
 import * as React from 'react';
 
 import '../../public/scss/components/footer/footer.scss';
 
 import Link from '../links/link';
+import Image from '../images/image';
 
 
-export default function Footer() {
+export default function Footer({ logoColor }) {
 
     return (
         <footer className="footer"
@@ -13,7 +16,14 @@ export default function Footer() {
         >
             <div className="footer_mobile footer_normal">
                 <div className="footer_mobile">
-                    <h1 className="fs-4 text-center">ZENEFY</h1>
+                    <Link href="/"><Image
+                        className='logo'
+                        src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
+                        alt='Logo'
+                        width={120}
+                        height={120}
+                        loading={'lazy'}
+                    /></Link>
                     <ul className="list_footer">
                         <li>Nos activités
                         </li>
@@ -35,10 +45,10 @@ export default function Footer() {
                     <h1 className="fs-4 text-center">MON COMPTE</h1>
                     <ul className="list_footer">
                         <li>
-                        <a href='/inscription'>Inscription</a>
+                            <a href='/inscription'>Inscription</a>
                         </li>
                         <li>
-                        <a href='/connexion'>Connexion</a>
+                            <a href='/connexion'>Connexion</a>
                         </li>
                         <li>
                             <a href='/profil'>Mon compte</a>

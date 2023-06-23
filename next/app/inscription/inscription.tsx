@@ -14,15 +14,16 @@ import Image from '../../components/images/image';
 import { authRegister } from '../../api/user'
 
 
+
 export default function Page() {
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [emailRegistration, setEmailRegistration] = React.useState("");
+    const [passwordRegistration, setPasswordRegistration] = React.useState("");
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [numPhone, setNumPhone] = React.useState("");
     const [showRegister, setShowRegister] = React.useState(true)
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmitRegister = async (event: any) => {
         event.preventDefault();
 
         const userData = {
@@ -41,13 +42,16 @@ export default function Page() {
     return (
         <div className="connexion">
             <div className="box m-auto">
+
                 <a href="/"><Image
-                src='/images/logo_blanc.png'
-                alt='Logo'
-                width={120}
-                height={120}
-                loading={'lazy'}
+                    className='logo'
+                    src='/images/logo_blanc.png'
+                    alt='Logo'
+                    width={120}
+                    height={120}
+                    loading={'lazy'}
                 ></Image></a>
+
                 <form onSubmit={handleSubmit} className="form">
                     {
                         showRegister ?
@@ -71,14 +75,6 @@ export default function Page() {
                                 <InputConnexion
                                     className="test"
                                     type="text"
-                                    name="address"
-                                    placeHolder="Adresse"
-                                    onChange={
-                                        (e: { target: { value: React.SetStateAction<string>; }; }) => setAddress(e.target.value)}
-                                />
-                                <InputConnexion
-                                    className="test"
-                                    type="text"
                                     name="num_phone"
                                     placeHolder="Numéro Tel."
                                     onChange={
@@ -98,7 +94,7 @@ export default function Page() {
                                 name="email"
                                 placeholder="Email"
                                 onChange={
-                                    (e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                                    (e: { target: { value: React.SetStateAction<string>; }; }) => setEmailRegistration(e.target.value)}
                             />
                                 <input
                                     className="test"
@@ -106,7 +102,7 @@ export default function Page() {
                                     name="password"
                                     placeholder="Password"
                                     onChange={
-                                        (e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
+                                        (e: { target: { value: React.SetStateAction<string>; }; }) => setPasswordRegistration(e.target.value)}
                                 />
                                 <ButtonConnexion
                                     className="test"
@@ -116,14 +112,14 @@ export default function Page() {
                             </>
                     }
                 </form>
-                <div className="footer">
+                <div className="footer_connexion">
                     <ButtonConnexion
                         className="buttonGold"
                         type='submit'
                         text="Partenaire / Client"
-                    onClick={() => {
-                        window.location.href = '/zenefy_pro'
-                    }}
+                        onClick={() => {
+                            window.location.href = '/zenefy_pro'
+                        }}
                     />
                 </div>
             </div>

@@ -15,6 +15,11 @@ export class Reservation {
     })
     done: boolean;
 
+    @Column({
+        default: false
+    })
+    paid: boolean
+
     @Column()
     title: string;
 

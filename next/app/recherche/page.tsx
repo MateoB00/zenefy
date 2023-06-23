@@ -15,11 +15,11 @@ export default function Page() {
 
     return (
         <>
-            <Header logoColor={false}/>
+            <Header logoColor={false} />
             <div className='recherche'>
                 <Lignes />
             </div>
-            <Footer />
+            <Footer logoColor={false} />
         </>
     )
 }

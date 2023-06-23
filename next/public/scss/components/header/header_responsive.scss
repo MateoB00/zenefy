@@ -22,12 +22,12 @@
 
             .right_side {
                 width: fit-content;
-                background-color: $primary_color;
+                background-color: #ffff;
                 padding: 10px 10px 10px 10px;
                 border-radius: 10px;
 
                 .burger-icon {
-                    @include burger(25px, 3px, 5px, #ffffff);
+                    @include burger(25px, 3px, 5px, $primary_color);
                 }
 
                 .menu-button-mobile.is-active .burger-icon {
@@ -48,10 +48,11 @@
             padding: 10px 10px 10px 30px;
             width: 80%;
 
-            .activite{
+            .activite {
                 background: none !important;
                 padding-right: 10px !important;
             }
+
             .lieu {
                 background: none;
                 color: $primary_color;

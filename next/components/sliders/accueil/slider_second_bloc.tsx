@@ -18,7 +18,7 @@ export default function SlideFirstBloc() {
         <Swiper
             slidesPerView={4}
             spaceBetween={100}
-            style={{ height: "400px" }}
+            style={{ height: "200px" }}
             autoplay={{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -37,8 +37,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_1.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
             <SwiperSlide>
@@ -46,8 +46,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_2.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
             <SwiperSlide>
@@ -55,8 +55,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_3.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
             <SwiperSlide>
@@ -64,8 +64,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_4.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
             <SwiperSlide>
@@ -73,8 +73,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_5.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
             <SwiperSlide>
@@ -82,8 +82,8 @@ export default function SlideFirstBloc() {
                     className='image_slide'
                     src={'/images/accueil/partenaire_6.png'}
                     alt='partenaire'
-                    width={350}
-                    height={250}
+                    width={70}
+                    height={100}
                 />
             </SwiperSlide>
         </Swiper>

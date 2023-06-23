@@ -63,13 +63,13 @@ export default function Page() {
                         onClick={handleBackClick}
                     />
                 </div>
-                <Footer />
+                <Footer logoColor={false} />
             </div>
         )
     }
     return (
         <div>
-            <Header logoColor={false}/>
+            <Header logoColor={false} />
             {
                 service ?
                     <div>
@@ -81,7 +81,7 @@ export default function Page() {
                     :
                     null
             }
-            <Footer />
+            <Footer logoColor={false} />
         </div>
     )
 }

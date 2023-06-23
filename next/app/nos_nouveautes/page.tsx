@@ -12,8 +12,8 @@ export default function Page() {
 
     return (
         <>
-            <Header logoColor={false}/>
-            <Footer />
+            <Header logoColor={false} />
+            <Footer logoColor={false} />
         </>
     )
 }

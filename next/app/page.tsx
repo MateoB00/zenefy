@@ -12,11 +12,11 @@ export default function Page() {
 
   return (
     <>
-      <Header logoColor={true}/>
+      <Header logoColor={true} />
       <FirstBlocAccueil />
       <SecondBlocAccueil />
       <ThirdBlocAccueil />
-      <Footer />
+      <Footer logoColor={true} />
     </>
   )
 }

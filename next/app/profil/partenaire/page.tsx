@@ -14,9 +14,9 @@ export default function Page() {
 
     return (
         <>
-            <Header logoColor={false}/>
+            <Header logoColor={false} />
             <ProfilPartnerContent />
-            <Footer />
+            <Footer logoColor={false} />
         </>
     )
 }

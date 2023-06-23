@@ -13,6 +13,9 @@ import Image from '../images/image';
 import Input from '../inputs/input';
 import { authLogout, getMe } from '../../api/user'
 
+import ConnexionPage from '../../app/connexion/connexion'
+import RegistrationPage from '../../app/inscription/inscription'
+
 
 export default function Header({ logoColor }) {
     const [userData, setUserData] = React.useState()
@@ -25,8 +28,7 @@ export default function Header({ logoColor }) {
     const [selectedCategory, setSelectedCategory] = React.useState('');
     const [selectedLieu, setSelectedLieu] = React.useState('')
 
-    const [logoUrl, setLogoUrl] = React.useState('/images/logo_blanc.png')
-
+    const [showConnexion, setShowConnexion] = React.useState(false)
 
     React.useEffect(() => {
         const fetchUserData = async () => {
@@ -72,22 +74,22 @@ export default function Header({ logoColor }) {
     return (
         <div className="header">
             <div className="menu">
-                
-<LinkAccueil
-href='/'
->
-                <Image
-                className='logo'
-                src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
-                alt='Logo'
-                width={120}
-                height={120}
-                loading={'lazy'}
-            /> 
+
+                <LinkAccueil
+                    href='/'
+                >
+                    <Image
+                        className='logo'
+                        src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
+                        alt='Logo'
+                        width={120}
+                        height={120}
+                        loading={'lazy'}
+                    />
                 </LinkAccueil>
                 <div className="mid_side">
                     <select name="category" id="category" className="activite" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-                        <option value="">Types d&apos;activités</option>
+                        <option value="">Types d&apos;activités ↓</option>
                         <option value="coiffure">Coiffure</option>
                         <option value="yoga">Yoga</option>
                         <option value="massage">Massage</option>
@@ -129,17 +131,17 @@ href='/'
             <div className="menu_mobile">
                 <div className="top_side">
                     <LinkAccueil
-href='/'
->
-                <Image
-                className='logo'
-                src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
-                alt='Logo'
-                width={120}
-                height={120}
-                loading={'lazy'}
-            /> 
-                </LinkAccueil>
+                        href='/'
+                    >
+                        <Image
+                            className='logo'
+                            src={logoColor ? '/images/logo.png' : '/images/logo_blanc.png'}
+                            alt='Logo'
+                            width={120}
+                            height={120}
+                            loading={'lazy'}
+                        />
+                    </LinkAccueil>
                     <div className="right_side">
                         <LinkAccueil
                             href='#'
@@ -157,7 +159,7 @@ href='/'
                 </div>
                 <div className="bot_side">
                     <select name="pets" id="pet-select" className="activite" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-                        <option value=""><p>Types d&apos;activités</p></option>
+                        <option value=""><p>Types d&apos;activités ↓</p></option>
                         <option value="coiffure"><p>Coiffure</p></option>
                         <option value="yoga"><p>Yoga</p></option>
                         <option value="massage"><p>Massage</p></option>
@@ -198,7 +200,7 @@ href='/'
                                     >
                                     </LinkAccueil>
                                 </p>
-                                <p className="item_2">
+                                    <p className="item_2">
                                         <LinkAccueil
                                             href='/profil'
                                             text='Mon Profil'
@@ -208,21 +210,15 @@ href='/'
                                         </LinkAccueil>
                                     </p></>
                             ) : (
-                                <><p className="item_1">
-                                    <LinkAccueil
-                                        href='/inscription'
-                                        text='Inscription'
-                                        className=''
-                                        id=''
-                                    >
-                                    </LinkAccueil>
-                                </p>
-                                <p className="item_2">
+                                <>
+                                    <p className="item_1">
                                         <LinkAccueil
-                                            href='/connexion'
                                             text='Connexion'
                                             className=''
                                             id=''
+                                            onClick={() => {
+                                                setShowConnexion(true)
+                                            }}
                                         >
                                         </LinkAccueil>
                                     </p></>
@@ -238,15 +234,6 @@ href='/'
                                     e.preventDefault();
                                     handleZenefyMenuButtonClick();
                                 }}
-                            >
-                            </LinkAccueil>
-                        </p>
-                        <p className="item_4">
-                            <LinkAccueil
-                                href='#'
-                                text='Apparence'
-                                className=''
-                                id=''
                             >
                             </LinkAccueil>
                         </p>
@@ -306,6 +293,9 @@ href='/'
                             </div> : ''
                         }
                     </div> : ''
+            }
+            {
+                showConnexion ? <ConnexionPage showIt={showConnexion}></ConnexionPage> : null
             }
         </div >
     )

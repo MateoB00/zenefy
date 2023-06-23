@@ -53,4 +53,23 @@ export class ServiceController {
 
         return services;
     }
+
+    @Get('city/:city')
+    async findByCity(
+        @Param('city') city: string,
+    ) {
+        const services = await this.serviceService.findByCity(city);
+
+        return services;
+    }
+
+    @Get('category/:category_name')
+    async findByCategory(
+        @Param('category_name') category: string,
+    ) {
+        console.log('aaaaaaa')
+        const services = await this.serviceService.findByCategory(category);
+
+        return services;
+    }
 }

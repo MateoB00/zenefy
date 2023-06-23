@@ -1,8 +1,14 @@
 @import '../../root';
 
 .connexion {
-    display: flex;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    height: 90%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    color: white;
+    z-index: 2;
 
     .box {
         width: 25%;
@@ -12,8 +18,8 @@
         padding: 50px;
 
         .logo {
-         margin: 0 auto;
-         margin-bottom: 30px;
+            margin: 0 auto;
+            margin-bottom: 30px;
         }
 
         .form {
@@ -34,15 +40,16 @@
             }
         }
 
-        .footer {
+        .footer_connexion {
             display: flex;
             justify-content: center;
             margin: 20px 0px 0px 0px;
 
             .buttonPartenaire {}
 
-            .buttonGold {
+            .buttonGold:hover {
                 background-image: $background_gold_gradient;
+                transition: background-image 0.3s ease-in-out;
             }
         }
     }

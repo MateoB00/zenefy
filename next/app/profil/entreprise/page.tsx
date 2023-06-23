@@ -14,9 +14,9 @@ export default async function Page() {
 
     return (
         <>
-            <Header logoColor={false}/>
+            <Header logoColor={false} />
             <ProfilEntrepriseContent />
-            <Footer />
+            <Footer logoColor={false} />
         </>
     )
 }

@@ -38,6 +38,50 @@ export const getServicesByCityAndCategory = async (city: string, category: strin
     }
 }
 
+export const getServicesByCity = async (city: string) => {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service/city/${city}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        const serviceData = await response.json();
+        return serviceData;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+export const getServicesByCategory = async (category: string) => {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_ENDPOINT_API}service/category/${category}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        const serviceData = await response.json();
+        console.log('serviceData');
+        console.log(serviceData);
+        console.log('serviceData');
+        return serviceData;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 export const getServicesByPartner = async (partner_id: any) => {
     try {
         const response = await fetch(

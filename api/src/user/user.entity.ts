@@ -22,7 +22,7 @@ export class User {
     @Column()
     password: string;
 
-    @Column('text')
+    @Column('text', { nullable: true })
     address: string;
 
     @Column({

@@ -92,4 +92,24 @@ export class ServiceService {
 
         return services
     }
+
+    async findByCategory(category: string) {
+        const services = await this.serviceRepository.createQueryBuilder('service')
+            .leftJoinAndSelect('service.category_service', 'category_service')
+            .leftJoinAndSelect('service.partner_company', 'partner_company')
+            .where('LOWER(category_service.name) = LOWER(:category)', { category: category })
+            .getMany();
+        console.log(services)
+        return services
+    }
+
+    async findByCity(city: string) {
+        const services = await this.serviceRepository.createQueryBuilder('service')
+            .leftJoinAndSelect('service.category_service', 'category_service')
+            .leftJoinAndSelect('service.partner_company', 'partner_company')
+            .where('LOWER(partner_company.city) = LOWER(:city)', { city: city })
+            .getMany();
+
+        return services
+    }
 }
