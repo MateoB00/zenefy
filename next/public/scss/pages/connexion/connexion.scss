@@ -36,6 +36,7 @@
 
             button {
                 margin: auto;
+                border-radius: 10px;
                 width: 60%;
             }
         }
@@ -50,6 +51,10 @@
             .buttonGold:hover {
                 background-image: $background_gold_gradient;
                 transition: background-image 0.3s ease-in-out;
+            }
+
+            .buttonGold {
+                border-radius: 10px;
             }
         }
     }
