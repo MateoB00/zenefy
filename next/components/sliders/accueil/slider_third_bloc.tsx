@@ -95,7 +95,7 @@ export default function SlideThirdBloc(
                     <ReviewSlideAccueil
                         author='Eric'
                         category='Coiffure'
-                        text="Le résultat de l'impact sur nos a dépassé nos attentes. Merci Zenefy"
+                        text="Le résultat de l'impact sur nos salariés a dépassé nos attentes. Merci Zenefy"
                     />
                 </div>
             </SwiperSlide>
