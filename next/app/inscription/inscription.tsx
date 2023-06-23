@@ -100,7 +100,7 @@ export default function Page() {
                                     className="test"
                                     type="password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="Mot de passe"
                                     onChange={
                                         (e: { target: { value: React.SetStateAction<string>; }; }) => setPasswordRegistration(e.target.value)}
                                 />

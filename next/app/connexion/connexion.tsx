@@ -84,7 +84,7 @@ export default function Page({ showIt }) {
                                 className="test"
                                 type="password"
                                 name="password"
-                                placeHolder="Password"
+                                placeHolder="Mot de passe"
                                 onChange={
                                     (e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
                             />
@@ -177,7 +177,7 @@ export default function Page({ showIt }) {
                                                     className="test"
                                                     type="password"
                                                     name="password"
-                                                    placeholder="Password"
+                                                    placeholder="Mot de passe"
                                                     onChange={
                                                         (e: { target: { value: React.SetStateAction<string>; }; }) => setPasswordRegistration(e.target.value)}
                                                 />
